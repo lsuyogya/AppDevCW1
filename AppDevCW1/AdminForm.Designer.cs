@@ -29,6 +29,8 @@ namespace AppDevCW1
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.AdminNavPanel = new System.Windows.Forms.Panel();
             this.SetPricesBtn = new System.Windows.Forms.Button();
             this.RegEmployeeBtn = new System.Windows.Forms.Button();
@@ -48,18 +50,26 @@ namespace AppDevCW1
             this.CategoryTF = new System.Windows.Forms.TextBox();
             this.ValueLbl = new System.Windows.Forms.Label();
             this.ValueTF = new System.Windows.Forms.TextBox();
+            this.TypeLbl = new System.Windows.Forms.Label();
+            this.TypeCB = new System.Windows.Forms.ComboBox();
             this.AddBtn = new System.Windows.Forms.Button();
             this.UpdateBtn = new System.Windows.Forms.Button();
             this.PricesDataGrid = new System.Windows.Forms.DataGridView();
             this.ViewReportPanel = new System.Windows.Forms.Panel();
+            this.ReportBasisLbl = new System.Windows.Forms.Label();
+            this.ReportBasisCB = new System.Windows.Forms.ComboBox();
+            this.ReportChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.ViewReportLbl = new System.Windows.Forms.Label();
-            this.TypeLbl = new System.Windows.Forms.Label();
-            this.TypeCB = new System.Windows.Forms.ComboBox();
+            this.ViewDailyReportBtn = new System.Windows.Forms.Button();
+            this.ViewWeeklyReportBtn = new System.Windows.Forms.Button();
+            this.ChartTypeCB = new System.Windows.Forms.ComboBox();
+            this.ChartTypeLbl = new System.Windows.Forms.Label();
             this.AdminNavPanel.SuspendLayout();
             this.RegisterEmployeePanel.SuspendLayout();
             this.SetPricesPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PricesDataGrid)).BeginInit();
             this.ViewReportPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).BeginInit();
             this.SuspendLayout();
             // 
             // AdminNavPanel
@@ -203,7 +213,7 @@ namespace AppDevCW1
             this.SetPricesPanel.Controls.Add(this.PricesDataGrid);
             this.SetPricesPanel.Location = new System.Drawing.Point(39, 127);
             this.SetPricesPanel.Name = "SetPricesPanel";
-            this.SetPricesPanel.Size = new System.Drawing.Size(733, 275);
+            this.SetPricesPanel.Size = new System.Drawing.Size(733, 300);
             this.SetPricesPanel.TabIndex = 3;
             this.SetPricesPanel.Visible = false;
             // 
@@ -249,56 +259,6 @@ namespace AppDevCW1
             this.ValueTF.Size = new System.Drawing.Size(153, 20);
             this.ValueTF.TabIndex = 4;
             // 
-            // AddBtn
-            // 
-            this.AddBtn.Location = new System.Drawing.Point(25, 226);
-            this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(75, 23);
-            this.AddBtn.TabIndex = 5;
-            this.AddBtn.Text = "Add";
-            this.AddBtn.UseVisualStyleBackColor = true;
-            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
-            // 
-            // UpdateBtn
-            // 
-            this.UpdateBtn.Location = new System.Drawing.Point(221, 226);
-            this.UpdateBtn.Name = "UpdateBtn";
-            this.UpdateBtn.Size = new System.Drawing.Size(75, 23);
-            this.UpdateBtn.TabIndex = 5;
-            this.UpdateBtn.Text = "Update";
-            this.UpdateBtn.UseVisualStyleBackColor = true;
-            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
-            // 
-            // PricesDataGrid
-            // 
-            this.PricesDataGrid.AllowUserToAddRows = false;
-            this.PricesDataGrid.AllowUserToDeleteRows = false;
-            this.PricesDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PricesDataGrid.Location = new System.Drawing.Point(459, 10);
-            this.PricesDataGrid.Name = "PricesDataGrid";
-            this.PricesDataGrid.ReadOnly = true;
-            this.PricesDataGrid.Size = new System.Drawing.Size(271, 261);
-            this.PricesDataGrid.TabIndex = 6;
-            // 
-            // ViewReportPanel
-            // 
-            this.ViewReportPanel.Controls.Add(this.ViewReportLbl);
-            this.ViewReportPanel.Location = new System.Drawing.Point(39, 124);
-            this.ViewReportPanel.Name = "ViewReportPanel";
-            this.ViewReportPanel.Size = new System.Drawing.Size(727, 275);
-            this.ViewReportPanel.TabIndex = 3;
-            this.ViewReportPanel.Visible = false;
-            // 
-            // ViewReportLbl
-            // 
-            this.ViewReportLbl.AutoSize = true;
-            this.ViewReportLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewReportLbl.Location = new System.Drawing.Point(280, 1);
-            this.ViewReportLbl.Name = "ViewReportLbl";
-            this.ViewReportLbl.Size = new System.Drawing.Size(173, 31);
-            this.ViewReportLbl.TabIndex = 3;
-            this.ViewReportLbl.Text = "View Report";
-            // 
             // TypeLbl
             // 
             this.TypeLbl.AutoSize = true;
@@ -321,15 +281,153 @@ namespace AppDevCW1
             this.TypeCB.Size = new System.Drawing.Size(153, 21);
             this.TypeCB.TabIndex = 7;
             // 
+            // AddBtn
+            // 
+            this.AddBtn.Location = new System.Drawing.Point(25, 226);
+            this.AddBtn.Name = "AddBtn";
+            this.AddBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddBtn.TabIndex = 5;
+            this.AddBtn.Text = "Add";
+            this.AddBtn.UseVisualStyleBackColor = true;
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
+            // 
+            // UpdateBtn
+            // 
+            this.UpdateBtn.Location = new System.Drawing.Point(165, 226);
+            this.UpdateBtn.Name = "UpdateBtn";
+            this.UpdateBtn.Size = new System.Drawing.Size(75, 23);
+            this.UpdateBtn.TabIndex = 5;
+            this.UpdateBtn.Text = "Update";
+            this.UpdateBtn.UseVisualStyleBackColor = true;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
+            // 
+            // PricesDataGrid
+            // 
+            this.PricesDataGrid.AllowUserToAddRows = false;
+            this.PricesDataGrid.AllowUserToDeleteRows = false;
+            this.PricesDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PricesDataGrid.Cursor = System.Windows.Forms.Cursors.No;
+            this.PricesDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.PricesDataGrid.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.PricesDataGrid.Location = new System.Drawing.Point(364, 8);
+            this.PricesDataGrid.Name = "PricesDataGrid";
+            this.PricesDataGrid.ReadOnly = true;
+            this.PricesDataGrid.Size = new System.Drawing.Size(363, 261);
+            this.PricesDataGrid.TabIndex = 6;
+            // 
+            // ViewReportPanel
+            // 
+            this.ViewReportPanel.Controls.Add(this.ChartTypeLbl);
+            this.ViewReportPanel.Controls.Add(this.ChartTypeCB);
+            this.ViewReportPanel.Controls.Add(this.ReportBasisLbl);
+            this.ViewReportPanel.Controls.Add(this.ReportBasisCB);
+            this.ViewReportPanel.Controls.Add(this.ReportChart);
+            this.ViewReportPanel.Controls.Add(this.ViewReportLbl);
+            this.ViewReportPanel.Controls.Add(this.ViewDailyReportBtn);
+            this.ViewReportPanel.Controls.Add(this.ViewWeeklyReportBtn);
+            this.ViewReportPanel.Location = new System.Drawing.Point(12, 86);
+            this.ViewReportPanel.Name = "ViewReportPanel";
+            this.ViewReportPanel.Size = new System.Drawing.Size(776, 352);
+            this.ViewReportPanel.TabIndex = 7;
+            this.ViewReportPanel.Visible = false;
+            // 
+            // ReportBasisLbl
+            // 
+            this.ReportBasisLbl.AutoSize = true;
+            this.ReportBasisLbl.Location = new System.Drawing.Point(457, 314);
+            this.ReportBasisLbl.Name = "ReportBasisLbl";
+            this.ReportBasisLbl.Size = new System.Drawing.Size(106, 13);
+            this.ReportBasisLbl.TabIndex = 7;
+            this.ReportBasisLbl.Text = "Weekly Report Basis";
+            // 
+            // ReportBasisCB
+            // 
+            this.ReportBasisCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ReportBasisCB.FormattingEnabled = true;
+            this.ReportBasisCB.Items.AddRange(new object[] {
+            "Visitor count",
+            "Earning"});
+            this.ReportBasisCB.Location = new System.Drawing.Point(454, 328);
+            this.ReportBasisCB.Name = "ReportBasisCB";
+            this.ReportBasisCB.Size = new System.Drawing.Size(121, 21);
+            this.ReportBasisCB.TabIndex = 6;
+            // 
+            // ReportChart
+            // 
+            this.ReportChart.BackColor = System.Drawing.Color.Transparent;
+            this.ReportChart.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.TileFlipX;
+            chartArea1.Name = "ChartArea1";
+            this.ReportChart.ChartAreas.Add(chartArea1);
+            this.ReportChart.Location = new System.Drawing.Point(151, 27);
+            this.ReportChart.Name = "ReportChart";
+            this.ReportChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
+            series1.ChartArea = "ChartArea1";
+            series1.Name = "Series1";
+            this.ReportChart.Series.Add(series1);
+            this.ReportChart.Size = new System.Drawing.Size(625, 263);
+            this.ReportChart.TabIndex = 5;
+            this.ReportChart.Text = "ReportChart";
+            // 
+            // ViewReportLbl
+            // 
+            this.ViewReportLbl.AutoSize = true;
+            this.ViewReportLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewReportLbl.Location = new System.Drawing.Point(313, 0);
+            this.ViewReportLbl.Name = "ViewReportLbl";
+            this.ViewReportLbl.Size = new System.Drawing.Size(173, 31);
+            this.ViewReportLbl.TabIndex = 0;
+            this.ViewReportLbl.Text = "View Report";
+            // 
+            // ViewDailyReportBtn
+            // 
+            this.ViewDailyReportBtn.Location = new System.Drawing.Point(3, 318);
+            this.ViewDailyReportBtn.Name = "ViewDailyReportBtn";
+            this.ViewDailyReportBtn.Size = new System.Drawing.Size(174, 34);
+            this.ViewDailyReportBtn.TabIndex = 3;
+            this.ViewDailyReportBtn.Text = "Daily Report";
+            this.ViewDailyReportBtn.UseVisualStyleBackColor = true;
+            this.ViewDailyReportBtn.Click += new System.EventHandler(this.ViewDailyReportBtn_Click);
+            // 
+            // ViewWeeklyReportBtn
+            // 
+            this.ViewWeeklyReportBtn.Location = new System.Drawing.Point(587, 313);
+            this.ViewWeeklyReportBtn.Name = "ViewWeeklyReportBtn";
+            this.ViewWeeklyReportBtn.Size = new System.Drawing.Size(173, 36);
+            this.ViewWeeklyReportBtn.TabIndex = 4;
+            this.ViewWeeklyReportBtn.Text = "Weekly Report";
+            this.ViewWeeklyReportBtn.UseVisualStyleBackColor = true;
+            this.ViewWeeklyReportBtn.Click += new System.EventHandler(this.ViewWeeklyReportBtn_Click);
+            // 
+            // ChartTypeCB
+            // 
+            this.ChartTypeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ChartTypeCB.FormattingEnabled = true;
+            this.ChartTypeCB.Items.AddRange(new object[] {
+            "Column",
+            "Pie"});
+            this.ChartTypeCB.Location = new System.Drawing.Point(15, 49);
+            this.ChartTypeCB.Name = "ChartTypeCB";
+            this.ChartTypeCB.Size = new System.Drawing.Size(121, 21);
+            this.ChartTypeCB.TabIndex = 6;
+            // 
+            // ChartTypeLbl
+            // 
+            this.ChartTypeLbl.AutoSize = true;
+            this.ChartTypeLbl.Location = new System.Drawing.Point(21, 36);
+            this.ChartTypeLbl.Name = "ChartTypeLbl";
+            this.ChartTypeLbl.Size = new System.Drawing.Size(59, 13);
+            this.ChartTypeLbl.TabIndex = 7;
+            this.ChartTypeLbl.Text = "Chart Type";
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.SetPricesPanel);
-            this.Controls.Add(this.AdminNavPanel);
-            this.Controls.Add(this.RegisterEmployeePanel);
             this.Controls.Add(this.ViewReportPanel);
+            this.Controls.Add(this.SetPricesPanel);
+            this.Controls.Add(this.RegisterEmployeePanel);
+            this.Controls.Add(this.AdminNavPanel);
             this.Name = "AdminForm";
             this.Text = "Admin";
             this.AdminNavPanel.ResumeLayout(false);
@@ -340,6 +438,7 @@ namespace AppDevCW1
             ((System.ComponentModel.ISupportInitialize)(this.PricesDataGrid)).EndInit();
             this.ViewReportPanel.ResumeLayout(false);
             this.ViewReportPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -367,10 +466,17 @@ namespace AppDevCW1
         private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.TextBox CategoryTF;
         private System.Windows.Forms.Button UpdateBtn;
-        private System.Windows.Forms.Panel ViewReportPanel;
-        private System.Windows.Forms.Label ViewReportLbl;
         private System.Windows.Forms.DataGridView PricesDataGrid;
         private System.Windows.Forms.Label TypeLbl;
         private System.Windows.Forms.ComboBox TypeCB;
+        private System.Windows.Forms.Panel ViewReportPanel;
+        private System.Windows.Forms.Label ReportBasisLbl;
+        private System.Windows.Forms.ComboBox ReportBasisCB;
+        private System.Windows.Forms.DataVisualization.Charting.Chart ReportChart;
+        private System.Windows.Forms.Label ViewReportLbl;
+        private System.Windows.Forms.Button ViewDailyReportBtn;
+        private System.Windows.Forms.Button ViewWeeklyReportBtn;
+        private System.Windows.Forms.Label ChartTypeLbl;
+        private System.Windows.Forms.ComboBox ChartTypeCB;
     }
 }

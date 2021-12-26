@@ -101,6 +101,8 @@ namespace AppDevCW1
         {
             HideAdminPannels();
             ViewReportPanel.Visible = true;
+
+            ChartTypeCB.SelectedItem = "Column";
         }
 
         private void SetPricesBtn_Click(object sender, EventArgs e)
@@ -129,14 +131,15 @@ namespace AppDevCW1
             List<Prices> pricesList = (List<Prices>)prices;
 
             Boolean categoryMissing = string.IsNullOrWhiteSpace(CategoryTF.Text) ? true : false;
-            Boolean valueMissing = string.IsNullOrWhiteSpace(ValueTF.Text) ? true : false;
+            Boolean valueInvalid = double.TryParse(ValueTF.Text, out double value) ? false: true;
             Boolean typeMissing = (TypeCB.SelectedItem == null) ? true : false;
             Boolean categoryExists = false;
-            if (categoryMissing || valueMissing || typeMissing)
-            {
+
+            if (categoryMissing || typeMissing)
                 MessageBox.Show("Please fill out every text fields.");
-            }
-            if (!categoryMissing && !valueMissing && !typeMissing && TypeCB.SelectedItem.ToString() != "BasePrice")
+            else if (valueInvalid)
+                MessageBox.Show("Please fill out a valid value.");
+            else if (TypeCB.SelectedItem.ToString() != "BasePrice" || TypeCB.SelectedItem.ToString() != "Duration")
             {
                 foreach (var price in pricesList)
                 {
@@ -144,9 +147,7 @@ namespace AppDevCW1
                     if (categoryExists) break;
                 }
                 if (categoryExists)
-                {
                     MessageBox.Show("The categogy already exists! Add a new category.");
-                }
                 else 
                 {
                     Prices price = new Prices();
@@ -160,10 +161,11 @@ namespace AppDevCW1
                     MessageBox.Show("The categogy has been successfully added.");
                     PricesDataGrid.DataSource = pricesList;
                 }
-            }else if (!typeMissing && TypeCB.SelectedItem.ToString() == "BasePrice")
-            {
-                MessageBox.Show("Cannot add another Base prcice! Try adding other types.");
             }
+            else if (TypeCB.SelectedItem.ToString() == "BasePrice")
+                MessageBox.Show("Cannot add another base prcice! Try adding other types."); 
+            else if (TypeCB.SelectedItem.ToString() == "Duration")
+                MessageBox.Show("Cannot add another duration! Try adding other types.");
         }
 
         private void UpdateBtn_Click(object sender, EventArgs e)
@@ -199,13 +201,74 @@ namespace AppDevCW1
                         MessageBox.Show("The categogy has been successfully updated.");
                         PricesDataGrid.DataSource = pricesList;
                         break;
-                    }    
+                    }
+                    else if (categoryExists) break;
                 }
                 if (!categoryExists)
-                {
                     MessageBox.Show("The categogy doesn't exist! Enter a category that exists to update it.");
-                }
+
+                 else if (!typeMatches) 
+                    MessageBox.Show("Please select an appropriate type for the category.");
+              
             }
+        }
+
+        private void ViewDailyReportBtn_Click(object sender, EventArgs e)
+        {
+            var dailyRepPath = "XMLs/DailyReport.xml";
+            FileStream filestream = new FileStream(dailyRepPath, FileMode.Open, FileAccess.Read);
+            xmlSerializer = new XmlSerializer(typeof(List<DailyReport>));
+            List<DailyReport> dailyReportList = (List<DailyReport>)xmlSerializer.Deserialize(filestream);
+            filestream.Close();
+
+            HashSet<string> xBindingCategory = new HashSet<string>();
+            foreach (var item in dailyReportList)
+                xBindingCategory.Add(item.visitorCategory);
+
+            List<int> yBindingCount = new List<int>();
+            foreach (var item in dailyReportList)
+                yBindingCount.Add(item.visitorCount);
+
+            ReportChart.Series[0].Points.DataBindXY(xBindingCategory, yBindingCount);
+            if (ChartTypeCB.SelectedItem.ToString() == "Pie")
+                ReportChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            else if (ChartTypeCB.SelectedItem.ToString() == "Column")
+                ReportChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+        }
+
+        private void ViewWeeklyReportBtn_Click(object sender, EventArgs e)
+        {
+            var weeklyRepPath = "XMLs/WeeklyReport.xml";
+            FileStream filestream = new FileStream(weeklyRepPath, FileMode.Open, FileAccess.Read);
+            xmlSerializer = new XmlSerializer(typeof(List<WeeklyReport>));
+            List<WeeklyReport> weeklyReportList = (List<WeeklyReport>)xmlSerializer.Deserialize(filestream);
+            filestream.Close();
+
+            List<string> xBindingDay = new List<string>();
+            foreach (var item in weeklyReportList)
+                xBindingDay.Add(item.day);
+
+            List<int> yBindingCount = new List<int>();
+            foreach (var item in weeklyReportList)
+                yBindingCount.Add(item.visitorCount);
+
+            List<double> yBindingEarning = new List<double>();
+            foreach (var item in weeklyReportList)
+                yBindingEarning.Add(item.earningTotal);
+
+            if (ReportBasisCB.SelectedItem == null)
+                MessageBox.Show("Please Select a report basis for weekly report");
+            else if (ReportBasisCB.SelectedItem.ToString() == "Visitor count")
+                ReportChart.Series[0].Points.DataBindXY(xBindingDay, yBindingCount);
+            else if (ReportBasisCB.SelectedItem.ToString() == "Earning")
+                ReportChart.Series[0].Points.DataBindXY(xBindingDay, yBindingEarning);
+
+            if (ChartTypeCB.SelectedItem.ToString() == "Pie")
+                ReportChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            else if (ChartTypeCB.SelectedItem.ToString() == "Column")
+                ReportChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+
         }
     }
 }
+
