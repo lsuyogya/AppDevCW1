@@ -30,8 +30,8 @@ namespace AppDevCW1
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.EmployeeNavPannel = new System.Windows.Forms.Panel();
             this.CustomerCheckinBtn = new System.Windows.Forms.Button();
             this.CustomerCheckoutBtn = new System.Windows.Forms.Button();
@@ -59,12 +59,12 @@ namespace AppDevCW1
             this.ViewReportPanel = new System.Windows.Forms.Panel();
             this.ReportBasisLbl = new System.Windows.Forms.Label();
             this.ReportBasisCB = new System.Windows.Forms.ComboBox();
+            this.ChartTypeLbl = new System.Windows.Forms.Label();
+            this.ChartTypeCB = new System.Windows.Forms.ComboBox();
             this.ReportChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.ViewReportLbl = new System.Windows.Forms.Label();
             this.ViewDailyReportBtn = new System.Windows.Forms.Button();
             this.ViewWeeklyReportBtn = new System.Windows.Forms.Button();
-            this.ChartTypeCB = new System.Windows.Forms.ComboBox();
-            this.ChartTypeLbl = new System.Windows.Forms.Label();
             this.dailyReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.EmployeeNavPannel.SuspendLayout();
             this.CheckinPanel.SuspendLayout();
@@ -91,9 +91,9 @@ namespace AppDevCW1
             // 
             // CustomerCheckinBtn
             // 
-            this.CustomerCheckinBtn.Location = new System.Drawing.Point(28, 22);
+            this.CustomerCheckinBtn.Location = new System.Drawing.Point(12, 3);
             this.CustomerCheckinBtn.Name = "CustomerCheckinBtn";
-            this.CustomerCheckinBtn.Size = new System.Drawing.Size(111, 23);
+            this.CustomerCheckinBtn.Size = new System.Drawing.Size(136, 61);
             this.CustomerCheckinBtn.TabIndex = 0;
             this.CustomerCheckinBtn.Text = "Customer Checkin";
             this.CustomerCheckinBtn.UseVisualStyleBackColor = true;
@@ -101,9 +101,9 @@ namespace AppDevCW1
             // 
             // CustomerCheckoutBtn
             // 
-            this.CustomerCheckoutBtn.Location = new System.Drawing.Point(247, 22);
+            this.CustomerCheckoutBtn.Location = new System.Drawing.Point(242, 3);
             this.CustomerCheckoutBtn.Name = "CustomerCheckoutBtn";
-            this.CustomerCheckoutBtn.Size = new System.Drawing.Size(111, 23);
+            this.CustomerCheckoutBtn.Size = new System.Drawing.Size(136, 61);
             this.CustomerCheckoutBtn.TabIndex = 0;
             this.CustomerCheckoutBtn.Text = "Customer Checkout";
             this.CustomerCheckoutBtn.UseVisualStyleBackColor = true;
@@ -111,9 +111,9 @@ namespace AppDevCW1
             // 
             // GenReportBtn
             // 
-            this.GenReportBtn.Location = new System.Drawing.Point(452, 22);
+            this.GenReportBtn.Location = new System.Drawing.Point(454, 3);
             this.GenReportBtn.Name = "GenReportBtn";
-            this.GenReportBtn.Size = new System.Drawing.Size(111, 23);
+            this.GenReportBtn.Size = new System.Drawing.Size(136, 61);
             this.GenReportBtn.TabIndex = 0;
             this.GenReportBtn.Text = "Generate Report";
             this.GenReportBtn.UseVisualStyleBackColor = true;
@@ -121,9 +121,9 @@ namespace AppDevCW1
             // 
             // ViewReportBtn
             // 
-            this.ViewReportBtn.Location = new System.Drawing.Point(659, 22);
+            this.ViewReportBtn.Location = new System.Drawing.Point(657, 3);
             this.ViewReportBtn.Name = "ViewReportBtn";
-            this.ViewReportBtn.Size = new System.Drawing.Size(111, 23);
+            this.ViewReportBtn.Size = new System.Drawing.Size(136, 61);
             this.ViewReportBtn.TabIndex = 0;
             this.ViewReportBtn.Text = "View Report";
             this.ViewReportBtn.UseVisualStyleBackColor = true;
@@ -354,18 +354,39 @@ namespace AppDevCW1
             this.ReportBasisCB.Size = new System.Drawing.Size(121, 21);
             this.ReportBasisCB.TabIndex = 6;
             // 
+            // ChartTypeLbl
+            // 
+            this.ChartTypeLbl.AutoSize = true;
+            this.ChartTypeLbl.Location = new System.Drawing.Point(18, 44);
+            this.ChartTypeLbl.Name = "ChartTypeLbl";
+            this.ChartTypeLbl.Size = new System.Drawing.Size(56, 13);
+            this.ChartTypeLbl.TabIndex = 7;
+            this.ChartTypeLbl.Text = "ChartType";
+            // 
+            // ChartTypeCB
+            // 
+            this.ChartTypeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ChartTypeCB.FormattingEnabled = true;
+            this.ChartTypeCB.Items.AddRange(new object[] {
+            "Column",
+            "Pie"});
+            this.ChartTypeCB.Location = new System.Drawing.Point(16, 60);
+            this.ChartTypeCB.Name = "ChartTypeCB";
+            this.ChartTypeCB.Size = new System.Drawing.Size(121, 21);
+            this.ChartTypeCB.TabIndex = 6;
+            // 
             // ReportChart
             // 
             this.ReportChart.BackColor = System.Drawing.Color.Transparent;
             this.ReportChart.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.TileFlipX;
-            chartArea2.Name = "ChartArea1";
-            this.ReportChart.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.ReportChart.ChartAreas.Add(chartArea1);
             this.ReportChart.Location = new System.Drawing.Point(143, 34);
             this.ReportChart.Name = "ReportChart";
             this.ReportChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series2.ChartArea = "ChartArea1";
-            series2.Name = "Series1";
-            this.ReportChart.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Name = "Series1";
+            this.ReportChart.Series.Add(series1);
             this.ReportChart.Size = new System.Drawing.Size(630, 261);
             this.ReportChart.TabIndex = 5;
             this.ReportChart.Text = "ReportChart";
@@ -400,27 +421,6 @@ namespace AppDevCW1
             this.ViewWeeklyReportBtn.UseVisualStyleBackColor = true;
             this.ViewWeeklyReportBtn.Click += new System.EventHandler(this.ViewWeeklyReportBtn_Click);
             // 
-            // ChartTypeCB
-            // 
-            this.ChartTypeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ChartTypeCB.FormattingEnabled = true;
-            this.ChartTypeCB.Items.AddRange(new object[] {
-            "Column",
-            "Pie"});
-            this.ChartTypeCB.Location = new System.Drawing.Point(16, 60);
-            this.ChartTypeCB.Name = "ChartTypeCB";
-            this.ChartTypeCB.Size = new System.Drawing.Size(121, 21);
-            this.ChartTypeCB.TabIndex = 6;
-            // 
-            // ChartTypeLbl
-            // 
-            this.ChartTypeLbl.AutoSize = true;
-            this.ChartTypeLbl.Location = new System.Drawing.Point(18, 44);
-            this.ChartTypeLbl.Name = "ChartTypeLbl";
-            this.ChartTypeLbl.Size = new System.Drawing.Size(56, 13);
-            this.ChartTypeLbl.TabIndex = 7;
-            this.ChartTypeLbl.Text = "ChartType";
-            // 
             // dailyReportBindingSource
             // 
             this.dailyReportBindingSource.DataSource = typeof(AppDevCW1.DailyReport);
@@ -430,9 +430,9 @@ namespace AppDevCW1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.GenReportPanel);
             this.Controls.Add(this.ViewReportPanel);
             this.Controls.Add(this.CheckoutPanel);
-            this.Controls.Add(this.GenReportPanel);
             this.Controls.Add(this.EmployeeNavPannel);
             this.Controls.Add(this.CheckinPanel);
             this.Name = "EmployeeForm";

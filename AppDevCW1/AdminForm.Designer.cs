@@ -56,14 +56,14 @@ namespace AppDevCW1
             this.UpdateBtn = new System.Windows.Forms.Button();
             this.PricesDataGrid = new System.Windows.Forms.DataGridView();
             this.ViewReportPanel = new System.Windows.Forms.Panel();
+            this.ChartTypeLbl = new System.Windows.Forms.Label();
+            this.ChartTypeCB = new System.Windows.Forms.ComboBox();
             this.ReportBasisLbl = new System.Windows.Forms.Label();
             this.ReportBasisCB = new System.Windows.Forms.ComboBox();
             this.ReportChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.ViewReportLbl = new System.Windows.Forms.Label();
             this.ViewDailyReportBtn = new System.Windows.Forms.Button();
             this.ViewWeeklyReportBtn = new System.Windows.Forms.Button();
-            this.ChartTypeCB = new System.Windows.Forms.ComboBox();
-            this.ChartTypeLbl = new System.Windows.Forms.Label();
             this.AdminNavPanel.SuspendLayout();
             this.RegisterEmployeePanel.SuspendLayout();
             this.SetPricesPanel.SuspendLayout();
@@ -85,9 +85,9 @@ namespace AppDevCW1
             // 
             // SetPricesBtn
             // 
-            this.SetPricesBtn.Location = new System.Drawing.Point(38, 23);
+            this.SetPricesBtn.Location = new System.Drawing.Point(38, 3);
             this.SetPricesBtn.Name = "SetPricesBtn";
-            this.SetPricesBtn.Size = new System.Drawing.Size(75, 23);
+            this.SetPricesBtn.Size = new System.Drawing.Size(109, 62);
             this.SetPricesBtn.TabIndex = 0;
             this.SetPricesBtn.Text = "Set Prices";
             this.SetPricesBtn.UseVisualStyleBackColor = true;
@@ -95,9 +95,9 @@ namespace AppDevCW1
             // 
             // RegEmployeeBtn
             // 
-            this.RegEmployeeBtn.Location = new System.Drawing.Point(344, 23);
+            this.RegEmployeeBtn.Location = new System.Drawing.Point(330, 3);
             this.RegEmployeeBtn.Name = "RegEmployeeBtn";
-            this.RegEmployeeBtn.Size = new System.Drawing.Size(110, 23);
+            this.RegEmployeeBtn.Size = new System.Drawing.Size(153, 62);
             this.RegEmployeeBtn.TabIndex = 0;
             this.RegEmployeeBtn.Text = "Register Employee";
             this.RegEmployeeBtn.UseVisualStyleBackColor = true;
@@ -105,9 +105,9 @@ namespace AppDevCW1
             // 
             // ViewReportBtn
             // 
-            this.ViewReportBtn.Location = new System.Drawing.Point(696, 23);
+            this.ViewReportBtn.Location = new System.Drawing.Point(644, 3);
             this.ViewReportBtn.Name = "ViewReportBtn";
-            this.ViewReportBtn.Size = new System.Drawing.Size(75, 23);
+            this.ViewReportBtn.Size = new System.Drawing.Size(121, 62);
             this.ViewReportBtn.TabIndex = 0;
             this.ViewReportBtn.Text = "View Report";
             this.ViewReportBtn.UseVisualStyleBackColor = true;
@@ -331,6 +331,27 @@ namespace AppDevCW1
             this.ViewReportPanel.TabIndex = 7;
             this.ViewReportPanel.Visible = false;
             // 
+            // ChartTypeLbl
+            // 
+            this.ChartTypeLbl.AutoSize = true;
+            this.ChartTypeLbl.Location = new System.Drawing.Point(21, 36);
+            this.ChartTypeLbl.Name = "ChartTypeLbl";
+            this.ChartTypeLbl.Size = new System.Drawing.Size(59, 13);
+            this.ChartTypeLbl.TabIndex = 7;
+            this.ChartTypeLbl.Text = "Chart Type";
+            // 
+            // ChartTypeCB
+            // 
+            this.ChartTypeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ChartTypeCB.FormattingEnabled = true;
+            this.ChartTypeCB.Items.AddRange(new object[] {
+            "Column",
+            "Pie"});
+            this.ChartTypeCB.Location = new System.Drawing.Point(15, 49);
+            this.ChartTypeCB.Name = "ChartTypeCB";
+            this.ChartTypeCB.Size = new System.Drawing.Size(121, 21);
+            this.ChartTypeCB.TabIndex = 6;
+            // 
             // ReportBasisLbl
             // 
             this.ReportBasisLbl.AutoSize = true;
@@ -397,27 +418,6 @@ namespace AppDevCW1
             this.ViewWeeklyReportBtn.Text = "Weekly Report";
             this.ViewWeeklyReportBtn.UseVisualStyleBackColor = true;
             this.ViewWeeklyReportBtn.Click += new System.EventHandler(this.ViewWeeklyReportBtn_Click);
-            // 
-            // ChartTypeCB
-            // 
-            this.ChartTypeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ChartTypeCB.FormattingEnabled = true;
-            this.ChartTypeCB.Items.AddRange(new object[] {
-            "Column",
-            "Pie"});
-            this.ChartTypeCB.Location = new System.Drawing.Point(15, 49);
-            this.ChartTypeCB.Name = "ChartTypeCB";
-            this.ChartTypeCB.Size = new System.Drawing.Size(121, 21);
-            this.ChartTypeCB.TabIndex = 6;
-            // 
-            // ChartTypeLbl
-            // 
-            this.ChartTypeLbl.AutoSize = true;
-            this.ChartTypeLbl.Location = new System.Drawing.Point(21, 36);
-            this.ChartTypeLbl.Name = "ChartTypeLbl";
-            this.ChartTypeLbl.Size = new System.Drawing.Size(59, 13);
-            this.ChartTypeLbl.TabIndex = 7;
-            this.ChartTypeLbl.Text = "Chart Type";
             // 
             // AdminForm
             // 
