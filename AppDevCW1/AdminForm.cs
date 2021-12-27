@@ -46,7 +46,7 @@ namespace AppDevCW1
 
         private void RegisterBtn_Click(object sender, EventArgs e)
         {
-            var path = "XMLs/Credentials.xml";
+            var path = "../../../Properties/XMLs/Credentials.xml";
             FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<LoginCredentials>));
             var cred = xmlSerializer.Deserialize(filestream);
@@ -110,7 +110,7 @@ namespace AppDevCW1
             HideAdminPannels();
             SetPricesPanel.Visible = true;
 
-            var path = "XMLs/Prices.xml";
+            var path = "../../Properties/XMLs/Prices.xml";
             FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<Prices>));
             var prices = xmlSerializer.Deserialize(filestream);
@@ -123,7 +123,7 @@ namespace AppDevCW1
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            var path = "XMLs/Prices.xml";
+            var path = "../../Properties/XMLs/Prices.xml";
             FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<Prices>));
             var prices = xmlSerializer.Deserialize(filestream);
@@ -170,7 +170,7 @@ namespace AppDevCW1
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
-            var path = "XMLs/Prices.xml";
+            var path = "../../Properties/XMLs/Prices.xml";
             FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<Prices>));
             var prices = xmlSerializer.Deserialize(filestream);
@@ -215,7 +215,7 @@ namespace AppDevCW1
 
         private void ViewDailyReportBtn_Click(object sender, EventArgs e)
         {
-            var dailyRepPath = "XMLs/DailyReport.xml";
+            var dailyRepPath = "../../Properties/XMLs/DailyReport.xml";
             FileStream filestream = new FileStream(dailyRepPath, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<DailyReport>));
             List<DailyReport> dailyReportList = (List<DailyReport>)xmlSerializer.Deserialize(filestream);
@@ -238,7 +238,7 @@ namespace AppDevCW1
 
         private void ViewWeeklyReportBtn_Click(object sender, EventArgs e)
         {
-            var weeklyRepPath = "XMLs/WeeklyReport.xml";
+            var weeklyRepPath = "../../Properties/XMLs/WeeklyReport.xml";
             FileStream filestream = new FileStream(weeklyRepPath, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<WeeklyReport>));
             List<WeeklyReport> weeklyReportList = (List<WeeklyReport>)xmlSerializer.Deserialize(filestream);

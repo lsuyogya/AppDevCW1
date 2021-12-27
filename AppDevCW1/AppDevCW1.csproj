@@ -77,7 +77,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Properties\DataSources\DailyReport.datasource" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="EmployeeForm.resx">
@@ -89,6 +88,21 @@
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\XMLs\Credentials.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\XMLs\DailyReport.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\XMLs\Prices.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\XMLs\Tickets.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\XMLs\WeeklyReport.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

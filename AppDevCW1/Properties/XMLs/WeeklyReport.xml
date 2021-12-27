@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<ArrayOfWeeklyReport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <WeeklyReport>
+    <day>Monday</day>
+    <visitorCount>1</visitorCount>
+    <earningTotal>160.2</earningTotal>
+  </WeeklyReport>
+  <WeeklyReport>
+    <day>Tuesday</day>
+    <visitorCount>1</visitorCount>
+    <earningTotal>160.2</earningTotal>
+  </WeeklyReport>
+  <WeeklyReport>
+    <day>Thursday</day>
+    <visitorCount>1</visitorCount>
+    <earningTotal>160.2</earningTotal>
+  </WeeklyReport>
+  <WeeklyReport>
+    <day>Wednesday</day>
+    <visitorCount>3</visitorCount>
+    <earningTotal>480.59999999999997</earningTotal>
+  </WeeklyReport>
+  <WeeklyReport>
+    <day>Sunday</day>
+    <visitorCount>6</visitorCount>
+    <earningTotal>1168.596</earningTotal>
+  </WeeklyReport>
+</ArrayOfWeeklyReport>

@@ -38,7 +38,7 @@ namespace AppDevCW1
         }
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-            var path = "XMLs/Credentials.xml";
+            var path = "../../Properties/XMLs/Credentials.xml";
             FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<LoginCredentials>));
             var cred = xmlSerializer.Deserialize(filestream);

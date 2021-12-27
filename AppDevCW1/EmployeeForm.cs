@@ -111,8 +111,8 @@ namespace AppDevCW1
             HideEmployeePanels();
             CheckinPanel.Visible = true;
 
-            var path = "XMLs/Prices.xml";
-            var path2 = "XMLs/Tickets.xml";
+            var path = "../../Properties/XMLs/Prices.xml";
+            var path2 = "../../Properties/XMLs/Tickets.xml";
             FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<Prices>));
             var prices = xmlSerializer.Deserialize(filestream);
@@ -166,7 +166,7 @@ namespace AppDevCW1
             var day = DayCB.SelectedValue;
             if (type!=null && day != null)
             {
-                var path = "XMLs/Tickets.xml";
+                var path = "../../Properties/XMLs/Tickets.xml";
                 FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
                 xmlSerializer = new XmlSerializer(typeof(List<Tickets>));
                 var ticketDetails = xmlSerializer.Deserialize(filestream);
@@ -199,7 +199,7 @@ namespace AppDevCW1
             HideEmployeePanels();
             CheckoutPanel.Visible = true;
 
-            var path = "XMLs/Tickets.xml";
+            var path = "../../Properties/XMLs/Tickets.xml";
             FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<Tickets>));
             var ticketDetails = xmlSerializer.Deserialize(filestream);
@@ -211,7 +211,7 @@ namespace AppDevCW1
 
         private void CheckPriceBtn_Click(object sender, EventArgs e)
         {
-            var path = "XMLs/Tickets.xml";
+            var path = "../../Properties/XMLs/Tickets.xml";
             FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<Tickets>));
             var ticketDetails = xmlSerializer.Deserialize(filestream);
@@ -261,7 +261,7 @@ namespace AppDevCW1
                     }
 
                     
-                    var path1 = "XMLs/Prices.xml";
+                    var path1 = "../../Properties/XMLs/Prices.xml";
                     FileStream filestream1 = new FileStream(path1, FileMode.Open, FileAccess.Read);
                     xmlSerializer = new XmlSerializer(typeof(List<Prices>));
                     var priceDetails = xmlSerializer.Deserialize(filestream1);
@@ -304,7 +304,7 @@ namespace AppDevCW1
 
         private void CheckoutBtn_Click(object sender, EventArgs e)
         {
-            var path = "XMLs/Tickets.xml";
+            var path = "../../Properties/XMLs/Tickets.xml";
             FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<Tickets>));
             var ticketDetails = xmlSerializer.Deserialize(filestream);
@@ -346,9 +346,9 @@ namespace AppDevCW1
         }
         private void GenDailyReportBtn_Click(object sender, EventArgs e)
         {
-            var pricePath = "XMLs/Prices.xml";
-            var ticketPath = "XMLs/Tickets.xml";
-            var dailyReportPath = "XMLs/DailyReport.xml";
+            var pricePath = "../../Properties/XMLs/Prices.xml";
+            var ticketPath = "../../Properties/XMLs/Tickets.xml";
+            var dailyReportPath = "../../Properties/XMLs/DailyReport.xml";
 
             FileStream filestream = new FileStream(pricePath, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<Prices>));
@@ -388,9 +388,9 @@ namespace AppDevCW1
 
         private void GenWeeklyReportBtn_Click(object sender, EventArgs e)
         {
-            var pricePath = "XMLs/Prices.xml";
-            var ticketPath = "XMLs/Tickets.xml";
-            var weeklyReportPath = "XMLs/WeeklyReport.xml";
+            var pricePath = "../../Properties/XMLs/Prices.xml";
+            var ticketPath = "../../Properties/XMLs/Tickets.xml";
+            var weeklyReportPath = "../../Properties/XMLs/WeeklyReport.xml";
 
             FileStream filestream = new FileStream(pricePath, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<Prices>));
@@ -446,7 +446,7 @@ namespace AppDevCW1
         private void ViewDailyReportBtn_Click(object sender, EventArgs e)
         {
 
-            var dailyRepPath = "XMLs/DailyReport.xml";
+            var dailyRepPath = "../../Properties/XMLs/DailyReport.xml";
             FileStream filestream = new FileStream(dailyRepPath, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<DailyReport>));
             List<DailyReport> dailyReportList = (List<DailyReport>) xmlSerializer.Deserialize(filestream);
@@ -470,7 +470,7 @@ namespace AppDevCW1
 
         private void ViewWeeklyReportBtn_Click(object sender, EventArgs e)
         {
-            var weeklyRepPath = "XMLs/WeeklyReport.xml";
+            var weeklyRepPath = "../../Properties/XMLs/WeeklyReport.xml";
             FileStream filestream = new FileStream(weeklyRepPath, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<WeeklyReport>));
             List<WeeklyReport> weeklyReportList = (List<WeeklyReport>)xmlSerializer.Deserialize(filestream);
