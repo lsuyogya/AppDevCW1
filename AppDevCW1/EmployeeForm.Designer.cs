@@ -347,7 +347,7 @@ namespace AppDevCW1
             this.ReportBasisCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ReportBasisCB.FormattingEnabled = true;
             this.ReportBasisCB.Items.AddRange(new object[] {
-            "Visitor count",
+            "Visitor Count",
             "Earning"});
             this.ReportBasisCB.Location = new System.Drawing.Point(459, 323);
             this.ReportBasisCB.Name = "ReportBasisCB";
@@ -359,9 +359,9 @@ namespace AppDevCW1
             this.ChartTypeLbl.AutoSize = true;
             this.ChartTypeLbl.Location = new System.Drawing.Point(18, 44);
             this.ChartTypeLbl.Name = "ChartTypeLbl";
-            this.ChartTypeLbl.Size = new System.Drawing.Size(56, 13);
+            this.ChartTypeLbl.Size = new System.Drawing.Size(92, 13);
             this.ChartTypeLbl.TabIndex = 7;
-            this.ChartTypeLbl.Text = "ChartType";
+            this.ChartTypeLbl.Text = "Report View Type";
             // 
             // ChartTypeCB
             // 
@@ -369,7 +369,8 @@ namespace AppDevCW1
             this.ChartTypeCB.FormattingEnabled = true;
             this.ChartTypeCB.Items.AddRange(new object[] {
             "Column",
-            "Pie"});
+            "Pie",
+            "Grid"});
             this.ChartTypeCB.Location = new System.Drawing.Point(16, 60);
             this.ChartTypeCB.Name = "ChartTypeCB";
             this.ChartTypeCB.Size = new System.Drawing.Size(121, 21);
@@ -430,8 +431,8 @@ namespace AppDevCW1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.GenReportPanel);
             this.Controls.Add(this.ViewReportPanel);
+            this.Controls.Add(this.GenReportPanel);
             this.Controls.Add(this.CheckoutPanel);
             this.Controls.Add(this.EmployeeNavPannel);
             this.Controls.Add(this.CheckinPanel);

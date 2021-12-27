@@ -1,11 +1,6 @@
 <?xml version="1.0"?>
 <ArrayOfWeeklyReport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <WeeklyReport>
-    <day>Monday</day>
-    <visitorCount>1</visitorCount>
-    <earningTotal>160.2</earningTotal>
-  </WeeklyReport>
-  <WeeklyReport>
     <day>Tuesday</day>
     <visitorCount>1</visitorCount>
     <earningTotal>160.2</earningTotal>
@@ -24,5 +19,10 @@
     <day>Sunday</day>
     <visitorCount>6</visitorCount>
     <earningTotal>1168.596</earningTotal>
+  </WeeklyReport>
+  <WeeklyReport>
+    <day>Monday</day>
+    <visitorCount>12</visitorCount>
+    <earningTotal>2188.2</earningTotal>
   </WeeklyReport>
 </ArrayOfWeeklyReport>

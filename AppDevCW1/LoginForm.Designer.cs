@@ -42,7 +42,7 @@ namespace AppDevCW1
             this.LoginTitleLbl.AutoSize = true;
             this.LoginTitleLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginTitleLbl.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.LoginTitleLbl.Location = new System.Drawing.Point(364, 9);
+            this.LoginTitleLbl.Location = new System.Drawing.Point(209, 34);
             this.LoginTitleLbl.Name = "LoginTitleLbl";
             this.LoginTitleLbl.Size = new System.Drawing.Size(95, 31);
             this.LoginTitleLbl.TabIndex = 0;
@@ -83,7 +83,7 @@ namespace AppDevCW1
             // 
             // LoginBtn
             // 
-            this.LoginBtn.Location = new System.Drawing.Point(384, 261);
+            this.LoginBtn.Location = new System.Drawing.Point(219, 249);
             this.LoginBtn.Name = "LoginBtn";
             this.LoginBtn.Size = new System.Drawing.Size(75, 23);
             this.LoginBtn.TabIndex = 3;
@@ -95,7 +95,7 @@ namespace AppDevCW1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 349);
+            this.ClientSize = new System.Drawing.Size(482, 349);
             this.Controls.Add(this.UNameTF);
             this.Controls.Add(this.PWordTF);
             this.Controls.Add(this.PWordLbl);

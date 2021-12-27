@@ -56,6 +56,7 @@ namespace AppDevCW1
                         var tempItem = listParam[j];
                         listParam[j] = listParam[j + 1];
                         listParam[j + 1] = tempItem;
+                        swapFlag = true;
                     }
                 }
                 if (!swapFlag) { break; }
@@ -63,9 +64,9 @@ namespace AppDevCW1
             return listParam;
         }
 
-        private static List<WeeklyReport> SortList(List<WeeklyReport> listParam)
+        private static List<WeeklyReport> SortList(List<WeeklyReport> listParam, string sortType)
         {
-            for (int i = 0; i < (listParam.Count - 1); i++)
+            for (int i = 0; i < (listParam.Count - 1); i++) if (sortType == "Earning")
             {
                 Boolean swapFlag = false;
                 for (int j = 0; j < (listParam.Count - 1); j++)
@@ -80,6 +81,21 @@ namespace AppDevCW1
                 }
                 if (!swapFlag) { break; }
             }
+            for (int i = 0; i < (listParam.Count - 1); i++) if (sortType == "Count")
+                {
+                    Boolean swapFlag = false;
+                    for (int j = 0; j < (listParam.Count - 1); j++)
+                    {
+                        if (listParam[j].visitorCount > listParam[j + 1].visitorCount)
+                        {
+                            var tempItem = listParam[j];
+                            listParam[j] = listParam[j + 1];
+                            listParam[j + 1] = tempItem;
+                            swapFlag = true;
+                        }
+                    }
+                    if (!swapFlag) { break; }
+                }
             return listParam;
         }
 
@@ -364,7 +380,7 @@ namespace AppDevCW1
 
             List<DailyReport> dailyReportList = new List<DailyReport>();
 
-            var groupTicketsCategory = ticketList.GroupBy(Tickets => Tickets.type);
+            var groupTicketsCategory = ticketList.GroupBy(x => x.type);
             foreach (var group in groupTicketsCategory) 
             {
                 DailyReport dailyReportDetail = new DailyReport();
@@ -425,7 +441,7 @@ namespace AppDevCW1
                 if (addFlag) weeklyReportList.Add(weeklyReportDetail);
             }
 
-            var sortedWeeklyReportList = SortList(weeklyReportList);
+            var sortedWeeklyReportList = SortList(weeklyReportList, "Earning");
 
             filestream = new FileStream(weeklyReportPath, FileMode.Truncate, FileAccess.Write);
             xmlSerializer = new XmlSerializer(typeof(List<WeeklyReport>));
@@ -476,23 +492,35 @@ namespace AppDevCW1
             List<WeeklyReport> weeklyReportList = (List<WeeklyReport>)xmlSerializer.Deserialize(filestream);
             filestream.Close();
 
-            HashSet<string> xBindingDay = new HashSet<string>();
-            foreach (var item in weeklyReportList)
-                xBindingDay.Add(item.day);
+            List<WeeklyReport> sortedWeeklyReportList = new List < WeeklyReport >();
+            if (ReportBasisCB.SelectedItem.ToString()=="Earning")
+                sortedWeeklyReportList = SortList(weeklyReportList, "Earning");
+            if (ReportBasisCB.SelectedItem.ToString()=="Visitor Count")
+                sortedWeeklyReportList = SortList(weeklyReportList, "Count");
 
-            List<int> yBindingCount = new List<int>();
-            foreach (var item in weeklyReportList)
-                yBindingCount.Add(item.visitorCount);
+            if (sortedWeeklyReportList != new List<WeeklyReport>())
+            {
+                HashSet<string> xBindingDay = new HashSet<string>();
+                foreach (var item in sortedWeeklyReportList)
+                    xBindingDay.Add(item.day);
 
-            List<double> yBindingEarning = new List<double>();
-            foreach (var item in weeklyReportList)
-                yBindingEarning.Add(item.earningTotal);
+                List<int> yBindingCount = new List<int>();
+                foreach (var item in sortedWeeklyReportList)
+                    yBindingCount.Add(item.visitorCount);
 
+                List<double> yBindingEarning = new List<double>();
+                foreach (var item in sortedWeeklyReportList)
+                    yBindingEarning.Add(item.earningTotal);
 
-            if (ReportBasisCB.SelectedItem.ToString() == "Visitor count")
-                ReportChart.Series[0].Points.DataBindXY(xBindingDay, yBindingCount);
-            else if (ReportBasisCB.SelectedItem.ToString() == "Earning")
-                ReportChart.Series[0].Points.DataBindXY(xBindingDay, yBindingEarning);
+                if (ReportBasisCB.SelectedItem.ToString() == "Visitor count")
+                    ReportChart.Series[0].Points.DataBindXY(xBindingDay, yBindingCount);
+                else if (ReportBasisCB.SelectedItem.ToString() == "Earning")
+                    ReportChart.Series[0].Points.DataBindXY(xBindingDay, yBindingEarning);
+            }else
+            {
+                MessageBox.Show("List was not sorted!!!");
+            }
+
         }
     }
 }

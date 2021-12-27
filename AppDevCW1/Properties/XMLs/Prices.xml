@@ -65,4 +65,9 @@
     <value>0.89</value>
     <type>TicketType</type>
   </Prices>
+  <Prices>
+    <category>Child2</category>
+    <value>0.8</value>
+    <type>BasePrice</type>
+  </Prices>
 </ArrayOfPrices>
