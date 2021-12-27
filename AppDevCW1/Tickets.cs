@@ -10,6 +10,7 @@ namespace AppDevCW1
     {
         public int ticketNo { get; set; }
         public string type { get; set; }
+        public int count { get; set; }
         public DateTime sysInDate { get; set; }
         public DateTime sysOutDate { get; set; }
         public string day { get; set; }

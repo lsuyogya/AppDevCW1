@@ -56,6 +56,7 @@ namespace AppDevCW1
             this.UpdateBtn = new System.Windows.Forms.Button();
             this.PricesDataGrid = new System.Windows.Forms.DataGridView();
             this.ViewReportPanel = new System.Windows.Forms.Panel();
+            this.ReportDataGrid = new System.Windows.Forms.DataGridView();
             this.ChartTypeLbl = new System.Windows.Forms.Label();
             this.ChartTypeCB = new System.Windows.Forms.ComboBox();
             this.ReportBasisLbl = new System.Windows.Forms.Label();
@@ -69,6 +70,7 @@ namespace AppDevCW1
             this.SetPricesPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PricesDataGrid)).BeginInit();
             this.ViewReportPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -270,6 +272,7 @@ namespace AppDevCW1
             // 
             // TypeCB
             // 
+            this.TypeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TypeCB.FormattingEnabled = true;
             this.TypeCB.Items.AddRange(new object[] {
             "BasePrice",
@@ -317,6 +320,7 @@ namespace AppDevCW1
             // 
             // ViewReportPanel
             // 
+            this.ViewReportPanel.Controls.Add(this.ReportDataGrid);
             this.ViewReportPanel.Controls.Add(this.ChartTypeLbl);
             this.ViewReportPanel.Controls.Add(this.ChartTypeCB);
             this.ViewReportPanel.Controls.Add(this.ReportBasisLbl);
@@ -330,6 +334,15 @@ namespace AppDevCW1
             this.ViewReportPanel.Size = new System.Drawing.Size(776, 352);
             this.ViewReportPanel.TabIndex = 7;
             this.ViewReportPanel.Visible = false;
+            // 
+            // ReportDataGrid
+            // 
+            this.ReportDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ReportDataGrid.Location = new System.Drawing.Point(156, 38);
+            this.ReportDataGrid.Name = "ReportDataGrid";
+            this.ReportDataGrid.Size = new System.Drawing.Size(598, 252);
+            this.ReportDataGrid.TabIndex = 8;
+            this.ReportDataGrid.Visible = false;
             // 
             // ChartTypeLbl
             // 
@@ -346,7 +359,8 @@ namespace AppDevCW1
             this.ChartTypeCB.FormattingEnabled = true;
             this.ChartTypeCB.Items.AddRange(new object[] {
             "Column",
-            "Pie"});
+            "Pie",
+            "Grid"});
             this.ChartTypeCB.Location = new System.Drawing.Point(15, 49);
             this.ChartTypeCB.Name = "ChartTypeCB";
             this.ChartTypeCB.Size = new System.Drawing.Size(121, 21);
@@ -379,7 +393,7 @@ namespace AppDevCW1
             this.ReportChart.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.TileFlipX;
             chartArea1.Name = "ChartArea1";
             this.ReportChart.ChartAreas.Add(chartArea1);
-            this.ReportChart.Location = new System.Drawing.Point(151, 27);
+            this.ReportChart.Location = new System.Drawing.Point(136, 38);
             this.ReportChart.Name = "ReportChart";
             this.ReportChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
             series1.ChartArea = "ChartArea1";
@@ -393,7 +407,7 @@ namespace AppDevCW1
             // 
             this.ViewReportLbl.AutoSize = true;
             this.ViewReportLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewReportLbl.Location = new System.Drawing.Point(313, 0);
+            this.ViewReportLbl.Location = new System.Drawing.Point(313, -5);
             this.ViewReportLbl.Name = "ViewReportLbl";
             this.ViewReportLbl.Size = new System.Drawing.Size(173, 31);
             this.ViewReportLbl.TabIndex = 0;
@@ -424,8 +438,8 @@ namespace AppDevCW1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.ViewReportPanel);
             this.Controls.Add(this.SetPricesPanel);
+            this.Controls.Add(this.ViewReportPanel);
             this.Controls.Add(this.RegisterEmployeePanel);
             this.Controls.Add(this.AdminNavPanel);
             this.Name = "AdminForm";
@@ -438,6 +452,7 @@ namespace AppDevCW1
             ((System.ComponentModel.ISupportInitialize)(this.PricesDataGrid)).EndInit();
             this.ViewReportPanel.ResumeLayout(false);
             this.ViewReportPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).EndInit();
             this.ResumeLayout(false);
 
@@ -478,5 +493,6 @@ namespace AppDevCW1
         private System.Windows.Forms.Button ViewWeeklyReportBtn;
         private System.Windows.Forms.Label ChartTypeLbl;
         private System.Windows.Forms.ComboBox ChartTypeCB;
+        private System.Windows.Forms.DataGridView ReportDataGrid;
     }
 }

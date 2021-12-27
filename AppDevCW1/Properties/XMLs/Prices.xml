@@ -2,12 +2,12 @@
 <ArrayOfPrices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Prices>
     <category>BasePrice</category>
-    <value>200</value>
+  <value>400</value>
     <type>BasePrice</type>
   </Prices>
   <Prices>
     <category>Child</category>
-    <value>0.9</value>
+    <value>0.8</value>
     <type>TicketType</type>
   </Prices>
   <Prices>
@@ -32,7 +32,7 @@
   </Prices>
   <Prices>
     <category>Holiday</category>
-    <value>0.9</value>
+    <value>1.5</value>
     <type>Day</type>
   </Prices>
   <Prices>
@@ -57,17 +57,12 @@
   </Prices>
   <Prices>
     <category>WholeDay</category>
-    <value>6</value>
+    <value>6.5</value>
     <type>Duration</type>
   </Prices>
   <Prices>
     <category>GroupOf15</category>
-    <value>0.89</value>
+    <value>0.85</value>
     <type>TicketType</type>
-  </Prices>
-  <Prices>
-    <category>Child2</category>
-    <value>0.8</value>
-    <type>BasePrice</type>
   </Prices>
 </ArrayOfPrices>

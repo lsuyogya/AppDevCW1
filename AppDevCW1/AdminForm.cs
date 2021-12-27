@@ -20,6 +20,41 @@ namespace AppDevCW1
             InitializeComponent();
             this.FormClosing += AppCloseOnFormClose;
         }
+        private static List<WeeklyReport> SortList(List<WeeklyReport> listParam, string sortType)
+        {
+            for (int i = 0; i < (listParam.Count - 1); i++) if (sortType == "Earning")
+                {
+                    Boolean swapFlag = false;
+                    for (int j = 0; j < (listParam.Count - 1); j++)
+                    {
+                        if (listParam[j].earningTotal > listParam[j + 1].earningTotal)
+                        {
+                            var tempItem = listParam[j];
+                            listParam[j] = listParam[j + 1];
+                            listParam[j + 1] = tempItem;
+                            swapFlag = true;
+                        }
+                    }
+                    if (!swapFlag) { break; }
+                }
+            for (int i = 0; i < (listParam.Count - 1); i++) if (sortType == "Count")
+                {
+                    Boolean swapFlag = false;
+                    for (int j = 0; j < (listParam.Count - 1); j++)
+                    {
+                        if (listParam[j].visitorCount > listParam[j + 1].visitorCount)
+                        {
+                            var tempItem = listParam[j];
+                            listParam[j] = listParam[j + 1];
+                            listParam[j + 1] = tempItem;
+                            swapFlag = true;
+                        }
+                    }
+                    if (!swapFlag) { break; }
+                }
+            return listParam;
+        }
+
 
         private void AppCloseOnFormClose(object sender, FormClosingEventArgs e)
         {
@@ -46,7 +81,7 @@ namespace AppDevCW1
 
         private void RegisterBtn_Click(object sender, EventArgs e)
         {
-            var path = "../../../Properties/XMLs/Credentials.xml";
+            var path = "../../Properties/XMLs/Credentials.xml";
             FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<LoginCredentials>));
             var cred = xmlSerializer.Deserialize(filestream);
@@ -103,6 +138,7 @@ namespace AppDevCW1
             ViewReportPanel.Visible = true;
 
             ChartTypeCB.SelectedItem = "Column";
+            ReportBasisCB.SelectedItem = "Earning";
         }
 
         private void SetPricesBtn_Click(object sender, EventArgs e)
@@ -139,7 +175,7 @@ namespace AppDevCW1
                 MessageBox.Show("Please fill out every text fields.");
             else if (valueInvalid)
                 MessageBox.Show("Please fill out a valid value.");
-            else if (TypeCB.SelectedItem.ToString() != "BasePrice" || TypeCB.SelectedItem.ToString() != "Duration")
+            else if (TypeCB.SelectedItem.ToString() != "BasePrice" && TypeCB.SelectedItem.ToString() != "Duration")
             {
                 foreach (var price in pricesList)
                 {
@@ -231,9 +267,23 @@ namespace AppDevCW1
 
             ReportChart.Series[0].Points.DataBindXY(xBindingCategory, yBindingCount);
             if (ChartTypeCB.SelectedItem.ToString() == "Pie")
+            {
+                ReportDataGrid.Visible = false;
+                ReportChart.Visible = true;
                 ReportChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            }
             else if (ChartTypeCB.SelectedItem.ToString() == "Column")
+            {
+                ReportDataGrid.Visible = false;
+                ReportChart.Visible = true;
                 ReportChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            }
+            else if (ChartTypeCB.SelectedItem.ToString() == "Grid")
+            {
+                ReportChart.Visible = false;
+                ReportDataGrid.Visible = true;
+                ReportDataGrid.DataSource = dailyReportList;
+            }
         }
 
         private void ViewWeeklyReportBtn_Click(object sender, EventArgs e)
@@ -244,29 +294,49 @@ namespace AppDevCW1
             List<WeeklyReport> weeklyReportList = (List<WeeklyReport>)xmlSerializer.Deserialize(filestream);
             filestream.Close();
 
+            List<WeeklyReport> sortedWeeklyReportList = new List<WeeklyReport>();
+            if (ReportBasisCB.SelectedItem.ToString() == "Earning")
+                sortedWeeklyReportList = SortList(weeklyReportList, "Earning");
+            if (ReportBasisCB.SelectedItem.ToString() == "Visitor count")
+                sortedWeeklyReportList = SortList(weeklyReportList, "Count");
+
             List<string> xBindingDay = new List<string>();
-            foreach (var item in weeklyReportList)
+            foreach (var item in sortedWeeklyReportList)
                 xBindingDay.Add(item.day);
 
             List<int> yBindingCount = new List<int>();
-            foreach (var item in weeklyReportList)
+            foreach (var item in sortedWeeklyReportList) 
                 yBindingCount.Add(item.visitorCount);
 
             List<double> yBindingEarning = new List<double>();
-            foreach (var item in weeklyReportList)
+            foreach (var item in sortedWeeklyReportList)
                 yBindingEarning.Add(item.earningTotal);
 
-            if (ReportBasisCB.SelectedItem == null)
-                MessageBox.Show("Please Select a report basis for weekly report");
-            else if (ReportBasisCB.SelectedItem.ToString() == "Visitor count")
+            if (ReportBasisCB.SelectedItem.ToString() == "Visitor count")
                 ReportChart.Series[0].Points.DataBindXY(xBindingDay, yBindingCount);
             else if (ReportBasisCB.SelectedItem.ToString() == "Earning")
                 ReportChart.Series[0].Points.DataBindXY(xBindingDay, yBindingEarning);
 
             if (ChartTypeCB.SelectedItem.ToString() == "Pie")
+            {
+                ReportDataGrid.Visible = false;
+                ReportChart.Visible = true;
                 ReportChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            }
             else if (ChartTypeCB.SelectedItem.ToString() == "Column")
+            {
+                ReportDataGrid.Visible = false;
+                ReportChart.Visible = true;
                 ReportChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            }
+            else if (ChartTypeCB.SelectedItem.ToString() == "Grid")
+            {
+                ReportChart.Visible = false;
+                ReportDataGrid.Visible = true;
+                ReportDataGrid.DataSource = sortedWeeklyReportList;
+            }
+
+            
 
         }
     }

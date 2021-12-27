@@ -2,27 +2,27 @@
 <ArrayOfWeeklyReport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <WeeklyReport>
     <day>Tuesday</day>
-    <visitorCount>1</visitorCount>
+    <visitorCount>15</visitorCount>
     <earningTotal>160.2</earningTotal>
   </WeeklyReport>
   <WeeklyReport>
     <day>Thursday</day>
-    <visitorCount>1</visitorCount>
+    <visitorCount>15</visitorCount>
     <earningTotal>160.2</earningTotal>
   </WeeklyReport>
   <WeeklyReport>
     <day>Wednesday</day>
-    <visitorCount>3</visitorCount>
+    <visitorCount>45</visitorCount>
     <earningTotal>480.59999999999997</earningTotal>
   </WeeklyReport>
   <WeeklyReport>
     <day>Sunday</day>
-    <visitorCount>6</visitorCount>
+    <visitorCount>76</visitorCount>
     <earningTotal>1168.596</earningTotal>
   </WeeklyReport>
   <WeeklyReport>
     <day>Monday</day>
-    <visitorCount>12</visitorCount>
-    <earningTotal>2188.2</earningTotal>
+    <visitorCount>78</visitorCount>
+    <earningTotal>2558.2</earningTotal>
   </WeeklyReport>
 </ArrayOfWeeklyReport>

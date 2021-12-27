@@ -180,7 +180,8 @@ namespace AppDevCW1
         {
             var type = TicketTypeCB.SelectedValue;
             var day = DayCB.SelectedValue;
-            if (type!=null && day != null)
+            var countIsInt = int.TryParse(CountTF.Text.ToString(), out int count) ? true : false;
+            if (type!=null && day != null && countIsInt)
             {
                 var path = "../../Properties/XMLs/Tickets.xml";
                 FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
@@ -195,8 +196,9 @@ namespace AppDevCW1
                 filestream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
                 Tickets checkInDetails = new Tickets();
                 checkInDetails.ticketNo = (lastTicketNo + 1);
-                checkInDetails.type = TicketTypeCB.SelectedValue.ToString();
-                checkInDetails.day = DayCB.SelectedValue.ToString();
+                checkInDetails.type = type.ToString();
+                checkInDetails.day = day.ToString();
+                checkInDetails.count = count;
                 checkInDetails.sysInDate = DateTime.Now;
                 checkInDetails.sysOutDate = new DateTime();
                 checkInDetails.hasPaid = false;
@@ -207,6 +209,9 @@ namespace AppDevCW1
                 filestream.Close();
                 MessageBox.Show("Customer checked in!");
                 TicketInfoDataGrid.DataSource = ticketList;
+            }else if (!countIsInt)
+            {
+                MessageBox.Show("Please enter a valid integer count.");
             }
         }
 
@@ -388,7 +393,7 @@ namespace AppDevCW1
                 {
                     dailyReportDetail.visitorCategory = ticket.type;
                     if (ticket.hasPaid && ticket.sysOutDate.ToString("d") == DateTime.Now.ToString("d"))
-                        dailyReportDetail.visitorCount += 1;
+                        dailyReportDetail.visitorCount += ticket.count;
                 }
                 dailyReportList.Add(dailyReportDetail);
             }
@@ -433,7 +438,7 @@ namespace AppDevCW1
                     if (ticket.hasPaid && (GetWeekNumber(ticket.sysOutDate) == GetWeekNumber(DateTime.Now))) 
                     {
                         weeklyReportDetail.day = ticket.sysOutDate.ToString("dddd");
-                        weeklyReportDetail.visitorCount += 1;
+                        weeklyReportDetail.visitorCount += ticket.count;
                         weeklyReportDetail.earningTotal += ticket.totalPrice;
                         addFlag = true;
                     }
@@ -461,11 +466,10 @@ namespace AppDevCW1
 
         private void ViewDailyReportBtn_Click(object sender, EventArgs e)
         {
-
             var dailyRepPath = "../../Properties/XMLs/DailyReport.xml";
             FileStream filestream = new FileStream(dailyRepPath, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<DailyReport>));
-            List<DailyReport> dailyReportList = (List<DailyReport>) xmlSerializer.Deserialize(filestream);
+            List<DailyReport> dailyReportList = (List<DailyReport>)xmlSerializer.Deserialize(filestream);
             filestream.Close();
 
             HashSet<string> xBindingCategory = new HashSet<string>();
@@ -477,11 +481,24 @@ namespace AppDevCW1
                 yBindingCount.Add(item.visitorCount);
 
             ReportChart.Series[0].Points.DataBindXY(xBindingCategory, yBindingCount);
-
             if (ChartTypeCB.SelectedItem.ToString() == "Pie")
-            ReportChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            if (ChartTypeCB.SelectedItem.ToString() == "Column")
+            {
+                ReportDataGrid.Visible = false;
+                ReportChart.Visible = true;
+                ReportChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            }
+            else if (ChartTypeCB.SelectedItem.ToString() == "Column")
+            {
+                ReportDataGrid.Visible = false;
+                ReportChart.Visible = true;
                 ReportChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            }
+            else if (ChartTypeCB.SelectedItem.ToString() == "Grid")
+            {
+                ReportChart.Visible = false;
+                ReportDataGrid.Visible = true;
+                ReportDataGrid.DataSource = dailyReportList;
+            }
         }
 
         private void ViewWeeklyReportBtn_Click(object sender, EventArgs e)
@@ -492,34 +509,49 @@ namespace AppDevCW1
             List<WeeklyReport> weeklyReportList = (List<WeeklyReport>)xmlSerializer.Deserialize(filestream);
             filestream.Close();
 
-            List<WeeklyReport> sortedWeeklyReportList = new List < WeeklyReport >();
-            if (ReportBasisCB.SelectedItem.ToString()=="Earning")
+            List<WeeklyReport> sortedWeeklyReportList = new List<WeeklyReport>();
+            if (ReportBasisCB.SelectedItem.ToString() == "Earning")
                 sortedWeeklyReportList = SortList(weeklyReportList, "Earning");
-            if (ReportBasisCB.SelectedItem.ToString()=="Visitor Count")
+            if (ReportBasisCB.SelectedItem.ToString() == "Visitor count")
                 sortedWeeklyReportList = SortList(weeklyReportList, "Count");
 
-            if (sortedWeeklyReportList != new List<WeeklyReport>())
+            List<string> xBindingDay = new List<string>();
+            foreach (var item in sortedWeeklyReportList)
+                xBindingDay.Add(item.day);
+
+            List<int> yBindingCount = new List<int>();
+            foreach (var item in sortedWeeklyReportList)
+                yBindingCount.Add(item.visitorCount);
+
+            List<double> yBindingEarning = new List<double>();
+            foreach (var item in sortedWeeklyReportList)
+                yBindingEarning.Add(item.earningTotal);
+
+            if (ReportBasisCB.SelectedItem.ToString() == "Visitor count")
+                ReportChart.Series[0].Points.DataBindXY(xBindingDay, yBindingCount);
+            else if (ReportBasisCB.SelectedItem.ToString() == "Earning")
+                ReportChart.Series[0].Points.DataBindXY(xBindingDay, yBindingEarning);
+
+            if (ChartTypeCB.SelectedItem.ToString() == "Pie")
             {
-                HashSet<string> xBindingDay = new HashSet<string>();
-                foreach (var item in sortedWeeklyReportList)
-                    xBindingDay.Add(item.day);
-
-                List<int> yBindingCount = new List<int>();
-                foreach (var item in sortedWeeklyReportList)
-                    yBindingCount.Add(item.visitorCount);
-
-                List<double> yBindingEarning = new List<double>();
-                foreach (var item in sortedWeeklyReportList)
-                    yBindingEarning.Add(item.earningTotal);
-
-                if (ReportBasisCB.SelectedItem.ToString() == "Visitor count")
-                    ReportChart.Series[0].Points.DataBindXY(xBindingDay, yBindingCount);
-                else if (ReportBasisCB.SelectedItem.ToString() == "Earning")
-                    ReportChart.Series[0].Points.DataBindXY(xBindingDay, yBindingEarning);
-            }else
-            {
-                MessageBox.Show("List was not sorted!!!");
+                ReportDataGrid.Visible = false;
+                ReportChart.Visible = true;
+                ReportChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             }
+            else if (ChartTypeCB.SelectedItem.ToString() == "Column")
+            {
+                ReportDataGrid.Visible = false;
+                ReportChart.Visible = true;
+                ReportChart.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            }
+            else if (ChartTypeCB.SelectedItem.ToString() == "Grid")
+            {
+                ReportChart.Visible = false;
+                ReportDataGrid.Visible = true;
+                ReportDataGrid.DataSource = sortedWeeklyReportList;
+            }
+
+
 
         }
     }

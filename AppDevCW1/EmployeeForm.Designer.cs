@@ -29,9 +29,8 @@ namespace AppDevCW1
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.EmployeeNavPannel = new System.Windows.Forms.Panel();
             this.CustomerCheckinBtn = new System.Windows.Forms.Button();
             this.CustomerCheckoutBtn = new System.Windows.Forms.Button();
@@ -65,7 +64,9 @@ namespace AppDevCW1
             this.ViewReportLbl = new System.Windows.Forms.Label();
             this.ViewDailyReportBtn = new System.Windows.Forms.Button();
             this.ViewWeeklyReportBtn = new System.Windows.Forms.Button();
-            this.dailyReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ReportDataGrid = new System.Windows.Forms.DataGridView();
+            this.CountLbl = new System.Windows.Forms.Label();
+            this.CountTF = new System.Windows.Forms.TextBox();
             this.EmployeeNavPannel.SuspendLayout();
             this.CheckinPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TicketInfoDataGrid)).BeginInit();
@@ -74,7 +75,7 @@ namespace AppDevCW1
             this.GenReportPanel.SuspendLayout();
             this.ViewReportPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dailyReportBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // EmployeeNavPannel
@@ -136,6 +137,8 @@ namespace AppDevCW1
             this.CheckinPanel.Controls.Add(this.DayLbl);
             this.CheckinPanel.Controls.Add(this.DayCB);
             this.CheckinPanel.Controls.Add(this.TicketTypeCB);
+            this.CheckinPanel.Controls.Add(this.CountTF);
+            this.CheckinPanel.Controls.Add(this.CountLbl);
             this.CheckinPanel.Controls.Add(this.TicketType);
             this.CheckinPanel.Controls.Add(this.CheckinLbl);
             this.CheckinPanel.Location = new System.Drawing.Point(12, 83);
@@ -154,7 +157,7 @@ namespace AppDevCW1
             // 
             // CheckinBtn
             // 
-            this.CheckinBtn.Location = new System.Drawing.Point(348, 128);
+            this.CheckinBtn.Location = new System.Drawing.Point(348, 141);
             this.CheckinBtn.Name = "CheckinBtn";
             this.CheckinBtn.Size = new System.Drawing.Size(75, 23);
             this.CheckinBtn.TabIndex = 5;
@@ -319,6 +322,7 @@ namespace AppDevCW1
             // 
             // ViewReportPanel
             // 
+            this.ViewReportPanel.Controls.Add(this.ReportDataGrid);
             this.ViewReportPanel.Controls.Add(this.ReportBasisLbl);
             this.ViewReportPanel.Controls.Add(this.ReportBasisCB);
             this.ViewReportPanel.Controls.Add(this.ChartTypeLbl);
@@ -347,7 +351,7 @@ namespace AppDevCW1
             this.ReportBasisCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ReportBasisCB.FormattingEnabled = true;
             this.ReportBasisCB.Items.AddRange(new object[] {
-            "Visitor Count",
+            "Visitor count",
             "Earning"});
             this.ReportBasisCB.Location = new System.Drawing.Point(459, 323);
             this.ReportBasisCB.Name = "ReportBasisCB";
@@ -380,14 +384,14 @@ namespace AppDevCW1
             // 
             this.ReportChart.BackColor = System.Drawing.Color.Transparent;
             this.ReportChart.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.TileFlipX;
-            chartArea1.Name = "ChartArea1";
-            this.ReportChart.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.ReportChart.ChartAreas.Add(chartArea2);
             this.ReportChart.Location = new System.Drawing.Point(143, 34);
             this.ReportChart.Name = "ReportChart";
             this.ReportChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series1.ChartArea = "ChartArea1";
-            series1.Name = "Series1";
-            this.ReportChart.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Name = "Series1";
+            this.ReportChart.Series.Add(series2);
             this.ReportChart.Size = new System.Drawing.Size(630, 261);
             this.ReportChart.TabIndex = 5;
             this.ReportChart.Text = "ReportChart";
@@ -422,20 +426,41 @@ namespace AppDevCW1
             this.ViewWeeklyReportBtn.UseVisualStyleBackColor = true;
             this.ViewWeeklyReportBtn.Click += new System.EventHandler(this.ViewWeeklyReportBtn_Click);
             // 
-            // dailyReportBindingSource
+            // ReportDataGrid
             // 
-            this.dailyReportBindingSource.DataSource = typeof(AppDevCW1.DailyReport);
+            this.ReportDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ReportDataGrid.Location = new System.Drawing.Point(165, 44);
+            this.ReportDataGrid.Name = "ReportDataGrid";
+            this.ReportDataGrid.Size = new System.Drawing.Size(593, 241);
+            this.ReportDataGrid.TabIndex = 8;
+            this.ReportDataGrid.Visible = false;
+            // 
+            // CountLbl
+            // 
+            this.CountLbl.AutoSize = true;
+            this.CountLbl.Location = new System.Drawing.Point(262, 118);
+            this.CountLbl.Name = "CountLbl";
+            this.CountLbl.Size = new System.Drawing.Size(35, 13);
+            this.CountLbl.TabIndex = 4;
+            this.CountLbl.Text = "Count";
+            // 
+            // CountTF
+            // 
+            this.CountTF.Location = new System.Drawing.Point(303, 115);
+            this.CountTF.Name = "CountTF";
+            this.CountTF.Size = new System.Drawing.Size(173, 20);
+            this.CountTF.TabIndex = 7;
             // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CheckoutPanel);
+            this.Controls.Add(this.CheckinPanel);
             this.Controls.Add(this.ViewReportPanel);
             this.Controls.Add(this.GenReportPanel);
-            this.Controls.Add(this.CheckoutPanel);
             this.Controls.Add(this.EmployeeNavPannel);
-            this.Controls.Add(this.CheckinPanel);
             this.Name = "EmployeeForm";
             this.Text = "Employee";
             this.EmployeeNavPannel.ResumeLayout(false);
@@ -450,7 +475,7 @@ namespace AppDevCW1
             this.ViewReportPanel.ResumeLayout(false);
             this.ViewReportPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dailyReportBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -485,11 +510,13 @@ namespace AppDevCW1
         private System.Windows.Forms.Label ViewReportLbl;
         private System.Windows.Forms.Button ViewDailyReportBtn;
         private System.Windows.Forms.Button ViewWeeklyReportBtn;
-        private System.Windows.Forms.BindingSource dailyReportBindingSource;
         private System.Windows.Forms.DataVisualization.Charting.Chart ReportChart;
         private System.Windows.Forms.Label ReportBasisLbl;
         private System.Windows.Forms.ComboBox ReportBasisCB;
         private System.Windows.Forms.Label ChartTypeLbl;
         private System.Windows.Forms.ComboBox ChartTypeCB;
+        private System.Windows.Forms.DataGridView ReportDataGrid;
+        private System.Windows.Forms.TextBox CountTF;
+        private System.Windows.Forms.Label CountLbl;
     }
 }
