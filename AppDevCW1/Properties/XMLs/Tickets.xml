@@ -7,7 +7,7 @@
     <sysInDate>2021-12-15T17:37:17.7197149+05:45</sysInDate>
     <sysOutDate>2021-12-25T17:37:34.0036902+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>180</totalPrice>
   </Tickets>
   <Tickets>
@@ -17,7 +17,7 @@
     <sysInDate>2021-12-25T17:37:20.5799554+05:45</sysInDate>
     <sysOutDate>2021-12-25T17:37:40.1398106+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>200</totalPrice>
   </Tickets>
   <Tickets>
@@ -27,7 +27,7 @@
     <sysInDate>2021-12-25T17:37:25.441072+05:45</sysInDate>
     <sysOutDate>2021-12-25T17:37:49.66263+05:45</sysOutDate>
     <day>Holiday</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>162</totalPrice>
   </Tickets>
   <Tickets>
@@ -37,7 +37,7 @@
     <sysInDate>2021-12-25T18:59:47.9591028+05:45</sysInDate>
     <sysOutDate>2021-12-25T19:00:19.8320065+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>180</totalPrice>
   </Tickets>
   <Tickets>
@@ -47,7 +47,7 @@
     <sysInDate>2021-12-25T18:59:50.7933592+05:45</sysInDate>
     <sysOutDate>2021-12-25T19:00:25.4849026+05:45</sysOutDate>
     <day>Holiday</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>162</totalPrice>
   </Tickets>
   <Tickets>
@@ -57,7 +57,7 @@
     <sysInDate>2021-12-25T18:59:53.7644604+05:45</sysInDate>
     <sysOutDate>2021-12-25T19:00:32.5432634+05:45</sysOutDate>
     <day>Holiday</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>180</totalPrice>
   </Tickets>
   <Tickets>
@@ -67,7 +67,7 @@
     <sysInDate>2021-12-26T16:59:57.1991147+05:45</sysInDate>
     <sysOutDate>2021-12-26T18:04:57.5818252+05:45</sysOutDate>
     <day>Holiday</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>317.19599999999997</totalPrice>
   </Tickets>
   <Tickets>
@@ -77,7 +77,7 @@
     <sysInDate>2021-12-26T18:00:31.1507127+05:45</sysInDate>
     <sysOutDate>2021-12-26T18:00:45.6400067+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>180</totalPrice>
   </Tickets>
   <Tickets>
@@ -87,7 +87,7 @@
     <sysInDate>2021-12-26T18:00:37.7595034+05:45</sysInDate>
     <sysOutDate>2021-12-26T18:00:54.7708261+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>180</totalPrice>
   </Tickets>
   <Tickets>
@@ -97,7 +97,7 @@
     <sysInDate>2021-12-26T20:07:11.2423678+05:45</sysInDate>
     <sysOutDate>2021-12-26T20:07:24.321678+05:45</sysOutDate>
     <day>Holiday</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>171</totalPrice>
   </Tickets>
   <Tickets>
@@ -107,7 +107,7 @@
     <sysInDate>2021-12-26T20:07:13.7610796+05:45</sysInDate>
     <sysOutDate>2021-12-26T20:07:32.758087+05:45</sysOutDate>
     <day>Holiday</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>160.2</totalPrice>
   </Tickets>
   <Tickets>
@@ -117,7 +117,7 @@
     <sysInDate>2021-12-26T20:07:14.98132+05:45</sysInDate>
     <sysOutDate>2021-12-26T20:07:42.3735468+05:45</sysOutDate>
     <day>Holiday</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>160.2</totalPrice>
   </Tickets>
   <Tickets>
@@ -127,7 +127,7 @@
     <sysInDate>2021-12-27T20:07:16.0572196+05:45</sysInDate>
     <sysOutDate>2021-12-27T20:07:49.1872229+05:45</sysOutDate>
     <day>Holiday</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>160.2</totalPrice>
   </Tickets>
   <Tickets>
@@ -137,7 +137,7 @@
     <sysInDate>2021-12-28T20:07:16.0572196+05:45</sysInDate>
     <sysOutDate>2021-12-28T20:07:49.1872229+05:45</sysOutDate>
     <day>Holiday</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>160.2</totalPrice>
   </Tickets>
   <Tickets>
@@ -147,7 +147,7 @@
     <sysInDate>2021-12-29T20:07:16.0572196+05:45</sysInDate>
     <sysOutDate>2021-12-29T20:07:49.1872229+05:45</sysOutDate>
     <day>Holiday</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>160.2</totalPrice>
   </Tickets>
   <Tickets>
@@ -157,7 +157,7 @@
     <sysInDate>2021-12-29T20:07:16.0572196+05:45</sysInDate>
     <sysOutDate>2021-12-29T20:07:49.1872229+05:45</sysOutDate>
     <day>Holiday</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>160.2</totalPrice>
   </Tickets>
   <Tickets>
@@ -167,7 +167,7 @@
     <sysInDate>2021-12-29T20:07:16.0572196+05:45</sysInDate>
     <sysOutDate>2021-12-29T20:07:49.1872229+05:45</sysOutDate>
     <day>Holiday</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>160.2</totalPrice>
   </Tickets>
   <Tickets>
@@ -177,7 +177,7 @@
     <sysInDate>2021-12-30T20:07:16.0572196+05:45</sysInDate>
     <sysOutDate>2021-12-30T20:07:49.1872229+05:45</sysOutDate>
     <day>Holiday</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>160.2</totalPrice>
   </Tickets>
   <Tickets>
@@ -187,7 +187,7 @@
     <sysInDate>2021-12-27T07:10:09.7153985+05:45</sysInDate>
     <sysOutDate>2021-12-27T07:11:03.6745494+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>190</totalPrice>
   </Tickets>
   <Tickets>
@@ -197,7 +197,7 @@
     <sysInDate>2021-12-27T07:10:15.0538615+05:45</sysInDate>
     <sysOutDate>2021-12-27T07:11:12.4859506+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>180</totalPrice>
   </Tickets>
   <Tickets>
@@ -207,7 +207,7 @@
     <sysInDate>2021-12-27T07:10:19.7001364+05:45</sysInDate>
     <sysOutDate>2021-12-27T07:11:20.8950238+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>200</totalPrice>
   </Tickets>
   <Tickets>
@@ -217,7 +217,7 @@
     <sysInDate>2021-12-27T07:10:22.7099688+05:45</sysInDate>
     <sysOutDate>2021-12-27T07:11:28.9698818+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>200</totalPrice>
   </Tickets>
   <Tickets>
@@ -227,7 +227,7 @@
     <sysInDate>2021-12-27T07:10:28.6306158+05:45</sysInDate>
     <sysOutDate>2021-12-27T07:11:34.011428+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>178</totalPrice>
   </Tickets>
   <Tickets>
@@ -237,7 +237,7 @@
     <sysInDate>2021-12-27T07:10:35.5017637+05:45</sysInDate>
     <sysOutDate>2021-12-27T07:11:38.8854887+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>180</totalPrice>
   </Tickets>
   <Tickets>
@@ -247,7 +247,7 @@
     <sysInDate>2021-12-27T07:10:38.0419684+05:45</sysInDate>
     <sysOutDate>2021-12-27T07:11:45.3957444+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>180</totalPrice>
   </Tickets>
   <Tickets>
@@ -257,7 +257,7 @@
     <sysInDate>2021-12-27T07:10:41.163711+05:45</sysInDate>
     <sysOutDate>2021-12-27T07:11:51.0925241+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>180</totalPrice>
   </Tickets>
   <Tickets>
@@ -267,7 +267,7 @@
     <sysInDate>2021-12-27T07:10:43.7782234+05:45</sysInDate>
     <sysOutDate>2021-12-27T07:11:56.8524629+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>180</totalPrice>
   </Tickets>
   <Tickets>
@@ -277,7 +277,7 @@
     <sysInDate>2021-12-27T07:10:46.3860351+05:45</sysInDate>
     <sysOutDate>2021-12-27T07:12:01.9646033+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>180</totalPrice>
   </Tickets>
   <Tickets>
@@ -287,7 +287,7 @@
     <sysInDate>2021-12-27T07:10:47.292831+05:45</sysInDate>
     <sysOutDate>2021-12-27T07:12:07.3112681+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>180</totalPrice>
   </Tickets>
   <Tickets>
@@ -297,7 +297,7 @@
     <sysInDate>2021-12-27T09:23:12.0643973+05:45</sysInDate>
     <sysOutDate>2021-12-27T09:23:35.6907119+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>180</totalPrice>
   </Tickets>
   <Tickets>
@@ -307,7 +307,37 @@
     <sysInDate>2021-12-27T16:29:12.059435+05:45</sysInDate>
     <sysOutDate>2021-12-27T16:29:23.854919+05:45</sysOutDate>
     <day>WeekDay</day>
-    <hasPaid>true</hasPaid>
+    <checkedOut>true</checkedOut>
     <totalPrice>190</totalPrice>
+  </Tickets>
+  <Tickets>
+    <ticketNo>32</ticketNo>
+    <type>GroupOf15</type>
+    <count>20</count>
+    <sysInDate>2021-12-28T09:58:13.6881036+05:45</sysInDate>
+    <sysOutDate>2021-12-28T09:58:29.3100502+05:45</sysOutDate>
+    <day>WeekDay</day>
+    <checkedOut>true</checkedOut>
+    <totalPrice>6800</totalPrice>
+  </Tickets>
+  <Tickets>
+    <ticketNo>33</ticketNo>
+    <type>Child</type>
+    <count>1</count>
+    <sysInDate>2021-12-30T12:42:12.7620205+05:45</sysInDate>
+    <sysOutDate>2021-12-30T12:42:28.4146561+05:45</sysOutDate>
+    <day>WeekDay</day>
+    <checkedOut>true</checkedOut>
+    <totalPrice>400</totalPrice>
+  </Tickets>
+  <Tickets>
+    <ticketNo>34</ticketNo>
+    <type>Child</type>
+    <count>1</count>
+    <sysInDate>2022-01-03T11:26:17.4548631+05:45</sysInDate>
+    <sysOutDate>2022-01-03T11:26:39.3300956+05:45</sysOutDate>
+    <day>WeekDay</day>
+    <checkedOut>true</checkedOut>
+    <totalPrice>400</totalPrice>
   </Tickets>
 </ArrayOfTickets>

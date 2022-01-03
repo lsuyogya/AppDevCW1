@@ -30,73 +30,60 @@ namespace AppDevCW1
             int weekNum = culture.Calendar.GetWeekOfYear(dateParam, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Sunday);
             return weekNum;
         }
-        
-        private static List<DailyReport> SortList(List<DailyReport> listParam)
+        //sort daily report based on count
+        private static List<DailyReport> SortList(List<DailyReport> list)
         {
-            //foreach (var outerLoopItem in listParam)
-            //{
-            //    foreach (var innerLoopItem in listParam)
-            //    {
-            //        if (innerLoopItem.visitorCount < outerLoopItem.visitorCount)
-            //        {
-            //            var tempItem = outerLoopItem;
-            //            outerLoopItem = innerLoopItem;
-            //            innerLoopItem = tempItem; 
-
-            //        }
-            //    }
-            //}
-            for (int i = 0; i < (listParam.Count - 1); i++)
+            for (int i = 0; i < (list.Count - 1); i++)
             {
                 Boolean swapFlag = false;
-                for (int j = 0; j < (listParam.Count - 1); j++)
+                for (int j = 0; j < (list.Count - 1); j++)
                 {
-                    if (listParam[j].visitorCount > listParam[j+1].visitorCount )
+                    if (list[j].visitorCount > list[j+1].visitorCount )
                     {
-                        var tempItem = listParam[j];
-                        listParam[j] = listParam[j + 1];
-                        listParam[j + 1] = tempItem;
+                        var tempItem = list[j];
+                        list[j] = list[j + 1];
+                        list[j + 1] = tempItem;
                         swapFlag = true;
                     }
                 }
                 if (!swapFlag) { break; }
             }
-            return listParam;
+            return list;
         }
-
-        private static List<WeeklyReport> SortList(List<WeeklyReport> listParam, string sortType)
+        //overload for sorting weekly report
+        private static List<WeeklyReport> SortList(List<WeeklyReport> list, string sortType)
         {
-            for (int i = 0; i < (listParam.Count - 1); i++) if (sortType == "Earning")
+            for (int i = 0; i < (list.Count - 1); i++) if (sortType == "Earning")
             {
                 Boolean swapFlag = false;
-                for (int j = 0; j < (listParam.Count - 1); j++)
+                for (int j = 0; j < (list.Count - 1); j++)
                 {
-                    if (listParam[j].earningTotal > listParam[j + 1].earningTotal)
+                    if (list[j].earningTotal > list[j + 1].earningTotal)
                     {
-                        var tempItem = listParam[j];
-                        listParam[j] = listParam[j + 1];
-                        listParam[j + 1] = tempItem;
+                        var tempItem = list[j];
+                        list[j] = list[j + 1];
+                        list[j + 1] = tempItem;
                         swapFlag = true;
                     }
                 }
                 if (!swapFlag) { break; }
             }
-            for (int i = 0; i < (listParam.Count - 1); i++) if (sortType == "Count")
+            for (int i = 0; i < (list.Count - 1); i++) if (sortType == "Count")
                 {
                     Boolean swapFlag = false;
-                    for (int j = 0; j < (listParam.Count - 1); j++)
+                    for (int j = 0; j < (list.Count - 1); j++)
                     {
-                        if (listParam[j].visitorCount > listParam[j + 1].visitorCount)
+                        if (list[j].visitorCount > list[j + 1].visitorCount)
                         {
-                            var tempItem = listParam[j];
-                            listParam[j] = listParam[j + 1];
-                            listParam[j + 1] = tempItem;
+                            var tempItem = list[j];
+                            list[j] = list[j + 1];
+                            list[j + 1] = tempItem;
                             swapFlag = true;
                         }
                     }
                     if (!swapFlag) { break; }
                 }
-            return listParam;
+            return list;
         }
 
         private void AppCloseOnFormClose(object sender, FormClosingEventArgs e)
@@ -122,6 +109,7 @@ namespace AppDevCW1
             GenReportPanel.Visible = false;
             ViewReportPanel.Visible = false;
         }
+        //Menu Btn click
         private void CustomerCheckinBtn_Click(object sender, EventArgs e)
         {
             HideEmployeePanels();
@@ -174,13 +162,16 @@ namespace AppDevCW1
             DayCB.DisplayMember = "category";
             DayCB.ValueMember = "category";
 
+            CountTF.Text = "1";
+
             TicketInfoDataGrid.DataSource = ticketList;
         }
+        //Actual checkin btn click
         private void CheckinBtn_Click(object sender, EventArgs e)
         {
             var type = TicketTypeCB.SelectedValue;
             var day = DayCB.SelectedValue;
-            var countIsInt = int.TryParse(CountTF.Text.ToString(), out int count) ? true : false;
+            Boolean countIsInt = int.TryParse(CountTF.Text.ToString(), out int count) ? true : false;
             if (type!=null && day != null && countIsInt)
             {
                 var path = "../../Properties/XMLs/Tickets.xml";
@@ -201,7 +192,7 @@ namespace AppDevCW1
                 checkInDetails.count = count;
                 checkInDetails.sysInDate = DateTime.Now;
                 checkInDetails.sysOutDate = new DateTime();
-                checkInDetails.hasPaid = false;
+                checkInDetails.checkedOut = false;
                 checkInDetails.totalPrice = 0;
                 ticketList.Add(checkInDetails);
                 xmlSerializer = new XmlSerializer(typeof(List<Tickets>));
@@ -214,7 +205,7 @@ namespace AppDevCW1
                 MessageBox.Show("Please enter a valid integer count.");
             }
         }
-
+        //Menu btn click
         private void CustomerCheckoutBtn_Click(object sender, EventArgs e)
         {
             HideEmployeePanels();
@@ -229,7 +220,7 @@ namespace AppDevCW1
             TicketInfoDataGrid2.DataSource = ticketList;
 
         }
-
+        //check price btn inside panel
         private void CheckPriceBtn_Click(object sender, EventArgs e)
         {
             var path = "../../Properties/XMLs/Tickets.xml";
@@ -247,7 +238,7 @@ namespace AppDevCW1
 
             foreach (var ticket in ticketList)
             {
-                if (!invalidTicketNo && ticket.ticketNo == ticketNo && !ticket.hasPaid)
+                if (!invalidTicketNo && ticket.ticketNo == ticketNo && !ticket.checkedOut)
                 {
                     ticketMatches = true;
                     ticket.totalPrice = 1;
@@ -257,19 +248,19 @@ namespace AppDevCW1
                     switch (timeDiff)
                     {
                         case 1:
-                            duration = "OneHr";
+                            duration = "Hour1";
                             break;
 
                         case 2:
-                            duration = "TwoHr";
+                            duration = "Hour2";
                             break;
 
                         case 3:
-                            duration = "ThreeHr";
+                            duration = "Hour3";
                             break;
 
                         case 4:
-                            duration = "FourHr";
+                            duration = "Hour4";
                             break;
 
                         case double n when (n > 4):
@@ -277,15 +268,15 @@ namespace AppDevCW1
                             break;
 
                         default:
-                            MessageBox.Show("Time calculation went wrong!!!");
+                            MessageBox.Show("Something Went Wrong With The Time Calculation!!!!!");
                             break;
                     }
 
                     
-                    var path1 = "../../Properties/XMLs/Prices.xml";
-                    FileStream filestream1 = new FileStream(path1, FileMode.Open, FileAccess.Read);
+                    var pricePath = "../../Properties/XMLs/Prices.xml";
+                    filestream = new FileStream(pricePath, FileMode.Open, FileAccess.Read);
                     xmlSerializer = new XmlSerializer(typeof(List<Prices>));
-                    var priceDetails = xmlSerializer.Deserialize(filestream1);
+                    var priceDetails = xmlSerializer.Deserialize(filestream);
                     List<Prices> priceList = (List<Prices>)priceDetails;
                     filestream.Close();
                     
@@ -295,11 +286,13 @@ namespace AppDevCW1
                         {
                             ticket.totalPrice= price.value * ticket.totalPrice;
                         }
-                    MessageBox.Show("The total price is" + ticket.totalPrice +"\n Please press Checkout Button to confirm payment.");
+                    ticket.totalPrice *= ticket.count;
+                    
+                    MessageBox.Show("The total price is:\n\t" + ticket.totalPrice +"\n Please press Checkout Button to confirm payment.");
                     break;
 
                 }
-                else if (!invalidTicketNo && ticket.ticketNo == ticketNo && ticket.hasPaid)
+                else if (!invalidTicketNo && ticket.ticketNo == ticketNo && ticket.checkedOut)
                 {
                     hasCheckedOut = true;
                     ticketPrice = ticket.totalPrice;
@@ -322,7 +315,7 @@ namespace AppDevCW1
             filestream.Close();
             TicketInfoDataGrid2.DataSource = ticketList;
         }
-
+        //checkout btn inside panel
         private void CheckoutBtn_Click(object sender, EventArgs e)
         {
             var path = "../../Properties/XMLs/Tickets.xml";
@@ -335,9 +328,9 @@ namespace AppDevCW1
             Boolean successFlag = false;
             Boolean priceEmptyFlag = true;
 
-            foreach (var ticket in ticketList) if ( isValidInteger && ticket.ticketNo == ticketNo && !ticket.hasPaid && ticket.totalPrice!=0)
+            foreach (var ticket in ticketList) if ( isValidInteger && ticket.ticketNo == ticketNo && !ticket.checkedOut && ticket.totalPrice!=0)
                 {
-                    ticket.hasPaid = true;
+                    ticket.checkedOut = true;
                     successFlag = true;
                     priceEmptyFlag = false;
                     break;
@@ -359,25 +352,20 @@ namespace AppDevCW1
             TicketInfoDataGrid2.DataSource = ticketList;
 
         }
-
+        //Menu btn
         private void GenReportBtn_Click(object sender, EventArgs e)
         {
             HideEmployeePanels();
             GenReportPanel.Visible = true;
         }
+        
+        //Daily report btn inside panel
         private void GenDailyReportBtn_Click(object sender, EventArgs e)
         {
-            var pricePath = "../../Properties/XMLs/Prices.xml";
             var ticketPath = "../../Properties/XMLs/Tickets.xml";
             var dailyReportPath = "../../Properties/XMLs/DailyReport.xml";
 
-            FileStream filestream = new FileStream(pricePath, FileMode.Open, FileAccess.Read);
-            xmlSerializer = new XmlSerializer(typeof(List<Prices>));
-            var priceDetails = xmlSerializer.Deserialize(filestream);
-            List<Prices> priceList = (List<Prices>)priceDetails;
-            filestream.Close();
-
-            filestream = new FileStream(ticketPath, FileMode.Open, FileAccess.Read);
+            FileStream filestream = new FileStream(ticketPath, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<Tickets>));
             var ticketDetails = xmlSerializer.Deserialize(filestream);
             List<Tickets> ticketList = (List<Tickets>)ticketDetails;
@@ -385,14 +373,15 @@ namespace AppDevCW1
 
             List<DailyReport> dailyReportList = new List<DailyReport>();
 
-            var groupTicketsCategory = ticketList.GroupBy(x => x.type);
+            var groupTicketsCategory = ticketList.GroupBy(ticket => ticket.type);
             foreach (var group in groupTicketsCategory) 
             {
                 DailyReport dailyReportDetail = new DailyReport();
                 foreach(var ticket in group) 
                 {
                     dailyReportDetail.visitorCategory = ticket.type;
-                    if (ticket.hasPaid && ticket.sysOutDate.ToString("d") == DateTime.Now.ToString("d"))
+                    Boolean dayMatch = ticket.sysOutDate.ToString("d") == DateTime.Now.ToString("d");
+                    if (ticket.checkedOut && dayMatch)
                         dailyReportDetail.visitorCount += ticket.count;
                 }
                 dailyReportList.Add(dailyReportDetail);
@@ -406,20 +395,13 @@ namespace AppDevCW1
             filestream.Close();
             MessageBox.Show("Daily report generated! \nPress View Report button to view the report");
         }
-
+        //Weekly report btn inside panel
         private void GenWeeklyReportBtn_Click(object sender, EventArgs e)
-        {
-            var pricePath = "../../Properties/XMLs/Prices.xml";
+        { 
             var ticketPath = "../../Properties/XMLs/Tickets.xml";
             var weeklyReportPath = "../../Properties/XMLs/WeeklyReport.xml";
 
-            FileStream filestream = new FileStream(pricePath, FileMode.Open, FileAccess.Read);
-            xmlSerializer = new XmlSerializer(typeof(List<Prices>));
-            var priceDetails = xmlSerializer.Deserialize(filestream);
-            filestream.Close();
-            List<Prices> priceList = (List<Prices>)priceDetails;
-
-            filestream = new FileStream(ticketPath, FileMode.Open, FileAccess.Read);
+            FileStream filestream = new FileStream(ticketPath, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<Tickets>));
             var ticketDetails = xmlSerializer.Deserialize(filestream);
             filestream.Close();
@@ -434,8 +416,10 @@ namespace AppDevCW1
                 Boolean addFlag = false;
                 foreach (var ticket in group) 
                 {
-                    //Check if the ticket has been checkedout and check if the ticket lies in the current week
-                    if (ticket.hasPaid && (GetWeekNumber(ticket.sysOutDate) == GetWeekNumber(DateTime.Now))) 
+                    Boolean weekMatch = GetWeekNumber(ticket.sysOutDate) == GetWeekNumber(DateTime.Now);
+                    Boolean yearMatch = ticket.sysOutDate.ToString("yyyy") == DateTime.Now.ToString("yyyy");
+                    //Check if the ticket has been checkedout and check if the ticket lies in the current week and year
+                    if (ticket.checkedOut && weekMatch && yearMatch) 
                     {
                         weeklyReportDetail.day = ticket.sysOutDate.ToString("dddd");
                         weeklyReportDetail.visitorCount += ticket.count;
@@ -454,7 +438,7 @@ namespace AppDevCW1
             filestream.Close();
             MessageBox.Show("Weekly report generated! \nPress View Report button to view the report");
         }
-
+        //Menu Btn
         private void ViewReportBtn_Click(object sender, EventArgs e)
         {
             HideEmployeePanels();
@@ -463,7 +447,7 @@ namespace AppDevCW1
             ChartTypeCB.SelectedItem = "Column";
             ReportBasisCB.SelectedItem = "Earning";
         }
-
+        //View daily report btn inside panel
         private void ViewDailyReportBtn_Click(object sender, EventArgs e)
         {
             var dailyRepPath = "../../Properties/XMLs/DailyReport.xml";
@@ -500,7 +484,7 @@ namespace AppDevCW1
                 ReportDataGrid.DataSource = dailyReportList;
             }
         }
-
+        //View weekly report btn inside panel
         private void ViewWeeklyReportBtn_Click(object sender, EventArgs e)
         {
             var weeklyRepPath = "../../Properties/XMLs/WeeklyReport.xml";
@@ -554,5 +538,13 @@ namespace AppDevCW1
 
 
         }
+        //Menu btn
+        private void SignOutBtn_Click(object sender, EventArgs e)
+        {
+            LoginForm login = new LoginForm();
+            login.Show();
+            this.Close();
+        }
     }
 }
+

@@ -2,7 +2,7 @@
 <ArrayOfPrices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Prices>
     <category>BasePrice</category>
-  <value>400</value>
+    <value>500</value>
     <type>BasePrice</type>
   </Prices>
   <Prices>
@@ -36,23 +36,23 @@
     <type>Day</type>
   </Prices>
   <Prices>
-    <category>OneHr</category>
+    <category>Hour1</category>
     <value>1</value>
     <type>Duration</type>
   </Prices>
   <Prices>
-    <category>TwoHr</category>
-    <value>1.98</value>
+    <category>Hour2</category>
+    <value>1.9</value>
     <type>Duration</type>
   </Prices>
   <Prices>
-    <category>ThreeHr</category>
+    <category>Hour3</category>
     <value>2.97</value>
     <type>Duration</type>
   </Prices>
   <Prices>
-    <category>FourHr</category>
-    <value>3.95</value>
+    <category>Hour4</category>
+    <value>3.99</value>
     <type>Duration</type>
   </Prices>
   <Prices>

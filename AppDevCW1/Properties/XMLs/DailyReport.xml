@@ -2,22 +2,22 @@
 <ArrayOfDailyReport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <DailyReport>
     <visitorCategory>Adult</visitorCategory>
-    <visitorCount>2</visitorCount>
-  </DailyReport>
-  <DailyReport>
-    <visitorCategory>Child</visitorCategory>
-    <visitorCount>7</visitorCount>
+    <visitorCount>0</visitorCount>
   </DailyReport>
   <DailyReport>
     <visitorCategory>GroupOf10</visitorCategory>
-    <visitorCount>15</visitorCount>
-  </DailyReport>
-  <DailyReport>
-    <visitorCategory>GroupOf5</visitorCategory>
-    <visitorCount>21</visitorCount>
+    <visitorCount>0</visitorCount>
   </DailyReport>
   <DailyReport>
     <visitorCategory>GroupOf15</visitorCategory>
-    <visitorCount>33</visitorCount>
+    <visitorCount>0</visitorCount>
+  </DailyReport>
+  <DailyReport>
+    <visitorCategory>GroupOf5</visitorCategory>
+    <visitorCount>0</visitorCount>
+  </DailyReport>
+  <DailyReport>
+    <visitorCategory>Child</visitorCategory>
+    <visitorCount>1</visitorCount>
   </DailyReport>
 </ArrayOfDailyReport>

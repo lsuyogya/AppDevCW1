@@ -34,6 +34,7 @@ namespace AppDevCW1
             this.AdminNavPanel = new System.Windows.Forms.Panel();
             this.SetPricesBtn = new System.Windows.Forms.Button();
             this.RegEmployeeBtn = new System.Windows.Forms.Button();
+            this.SignOutBtn = new System.Windows.Forms.Button();
             this.ViewReportBtn = new System.Windows.Forms.Button();
             this.RegisterEmployeePanel = new System.Windows.Forms.Panel();
             this.RegEmployeesLbl = new System.Windows.Forms.Label();
@@ -76,9 +77,10 @@ namespace AppDevCW1
             // 
             // AdminNavPanel
             // 
-            this.AdminNavPanel.BackColor = System.Drawing.SystemColors.Highlight;
+            this.AdminNavPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.AdminNavPanel.Controls.Add(this.SetPricesBtn);
             this.AdminNavPanel.Controls.Add(this.RegEmployeeBtn);
+            this.AdminNavPanel.Controls.Add(this.SignOutBtn);
             this.AdminNavPanel.Controls.Add(this.ViewReportBtn);
             this.AdminNavPanel.Location = new System.Drawing.Point(1, 0);
             this.AdminNavPanel.Name = "AdminNavPanel";
@@ -87,7 +89,7 @@ namespace AppDevCW1
             // 
             // SetPricesBtn
             // 
-            this.SetPricesBtn.Location = new System.Drawing.Point(38, 3);
+            this.SetPricesBtn.Location = new System.Drawing.Point(14, 3);
             this.SetPricesBtn.Name = "SetPricesBtn";
             this.SetPricesBtn.Size = new System.Drawing.Size(109, 62);
             this.SetPricesBtn.TabIndex = 0;
@@ -97,7 +99,7 @@ namespace AppDevCW1
             // 
             // RegEmployeeBtn
             // 
-            this.RegEmployeeBtn.Location = new System.Drawing.Point(330, 3);
+            this.RegEmployeeBtn.Location = new System.Drawing.Point(216, 3);
             this.RegEmployeeBtn.Name = "RegEmployeeBtn";
             this.RegEmployeeBtn.Size = new System.Drawing.Size(153, 62);
             this.RegEmployeeBtn.TabIndex = 0;
@@ -105,9 +107,19 @@ namespace AppDevCW1
             this.RegEmployeeBtn.UseVisualStyleBackColor = true;
             this.RegEmployeeBtn.Click += new System.EventHandler(this.RegEmployeeBtn_Click);
             // 
+            // SignOutBtn
+            // 
+            this.SignOutBtn.Location = new System.Drawing.Point(666, 3);
+            this.SignOutBtn.Name = "SignOutBtn";
+            this.SignOutBtn.Size = new System.Drawing.Size(121, 62);
+            this.SignOutBtn.TabIndex = 0;
+            this.SignOutBtn.Text = "Sign Out";
+            this.SignOutBtn.UseVisualStyleBackColor = true;
+            this.SignOutBtn.Click += new System.EventHandler(this.SignOutBtn_Click);
+            // 
             // ViewReportBtn
             // 
-            this.ViewReportBtn.Location = new System.Drawing.Point(644, 3);
+            this.ViewReportBtn.Location = new System.Drawing.Point(465, 3);
             this.ViewReportBtn.Name = "ViewReportBtn";
             this.ViewReportBtn.Size = new System.Drawing.Size(121, 62);
             this.ViewReportBtn.TabIndex = 0;
@@ -494,5 +506,6 @@ namespace AppDevCW1
         private System.Windows.Forms.Label ChartTypeLbl;
         private System.Windows.Forms.ComboBox ChartTypeCB;
         private System.Windows.Forms.DataGridView ReportDataGrid;
+        private System.Windows.Forms.Button SignOutBtn;
     }
 }

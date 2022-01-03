@@ -20,6 +20,7 @@ namespace AppDevCW1
             InitializeComponent();
             this.FormClosing += AppCloseOnFormClose;
         }
+        //Sort method for weekly report
         private static List<WeeklyReport> SortList(List<WeeklyReport> listParam, string sortType)
         {
             for (int i = 0; i < (listParam.Count - 1); i++) if (sortType == "Earning")
@@ -55,7 +56,6 @@ namespace AppDevCW1
             return listParam;
         }
 
-
         private void AppCloseOnFormClose(object sender, FormClosingEventArgs e)
         {
 
@@ -78,7 +78,7 @@ namespace AppDevCW1
             SetPricesPanel.Visible = false;
             ViewReportPanel.Visible = false;
         }
-
+        //Register button on register panel
         private void RegisterBtn_Click(object sender, EventArgs e)
         {
             var path = "../../Properties/XMLs/Credentials.xml";
@@ -125,13 +125,13 @@ namespace AppDevCW1
             }
 
         }
-
+        //Menu button
         private void RegEmployeeBtn_Click(object sender, EventArgs e)
         {
             HideAdminPannels();
             RegisterEmployeePanel.Visible = true;
         }
-
+        //Menu button
         private void ViewReportBtn_Click(object sender, EventArgs e)
         {
             HideAdminPannels();
@@ -140,7 +140,7 @@ namespace AppDevCW1
             ChartTypeCB.SelectedItem = "Column";
             ReportBasisCB.SelectedItem = "Earning";
         }
-
+        //Menu button
         private void SetPricesBtn_Click(object sender, EventArgs e)
         {
             HideAdminPannels();
@@ -157,6 +157,7 @@ namespace AppDevCW1
 
         }
 
+        //Add button on SetPrices panel
         private void AddBtn_Click(object sender, EventArgs e)
         {
             var path = "../../Properties/XMLs/Prices.xml";
@@ -204,6 +205,7 @@ namespace AppDevCW1
                 MessageBox.Show("Cannot add another duration! Try adding other types.");
         }
 
+        //Update btn on SetPrices panel
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
             var path = "../../Properties/XMLs/Prices.xml";
@@ -249,6 +251,7 @@ namespace AppDevCW1
             }
         }
 
+        //Daily Report btn on view report panel
         private void ViewDailyReportBtn_Click(object sender, EventArgs e)
         {
             var dailyRepPath = "../../Properties/XMLs/DailyReport.xml";
@@ -286,6 +289,7 @@ namespace AppDevCW1
             }
         }
 
+        //Weekly Report btn on view report panel
         private void ViewWeeklyReportBtn_Click(object sender, EventArgs e)
         {
             var weeklyRepPath = "../../Properties/XMLs/WeeklyReport.xml";
@@ -338,6 +342,14 @@ namespace AppDevCW1
 
             
 
+        }
+
+        //Menu Btn
+        private void SignOutBtn_Click(object sender, EventArgs e)
+        {
+            LoginForm login = new LoginForm();
+            login.Show();
+            this.Close();
         }
     }
 }

@@ -29,12 +29,13 @@ namespace AppDevCW1
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.EmployeeNavPannel = new System.Windows.Forms.Panel();
             this.CustomerCheckinBtn = new System.Windows.Forms.Button();
             this.CustomerCheckoutBtn = new System.Windows.Forms.Button();
             this.GenReportBtn = new System.Windows.Forms.Button();
+            this.SignOutBtn = new System.Windows.Forms.Button();
             this.ViewReportBtn = new System.Windows.Forms.Button();
             this.CheckinPanel = new System.Windows.Forms.Panel();
             this.TicketInfoDataGrid = new System.Windows.Forms.DataGridView();
@@ -42,6 +43,8 @@ namespace AppDevCW1
             this.DayLbl = new System.Windows.Forms.Label();
             this.DayCB = new System.Windows.Forms.ComboBox();
             this.TicketTypeCB = new System.Windows.Forms.ComboBox();
+            this.CountTF = new System.Windows.Forms.TextBox();
+            this.CountLbl = new System.Windows.Forms.Label();
             this.TicketType = new System.Windows.Forms.Label();
             this.CheckinLbl = new System.Windows.Forms.Label();
             this.CheckoutPanel = new System.Windows.Forms.Panel();
@@ -56,6 +59,7 @@ namespace AppDevCW1
             this.GenDailyReportBtn = new System.Windows.Forms.Button();
             this.GenWeeklyReportBtn = new System.Windows.Forms.Button();
             this.ViewReportPanel = new System.Windows.Forms.Panel();
+            this.ReportDataGrid = new System.Windows.Forms.DataGridView();
             this.ReportBasisLbl = new System.Windows.Forms.Label();
             this.ReportBasisCB = new System.Windows.Forms.ComboBox();
             this.ChartTypeLbl = new System.Windows.Forms.Label();
@@ -64,9 +68,6 @@ namespace AppDevCW1
             this.ViewReportLbl = new System.Windows.Forms.Label();
             this.ViewDailyReportBtn = new System.Windows.Forms.Button();
             this.ViewWeeklyReportBtn = new System.Windows.Forms.Button();
-            this.ReportDataGrid = new System.Windows.Forms.DataGridView();
-            this.CountLbl = new System.Windows.Forms.Label();
-            this.CountTF = new System.Windows.Forms.TextBox();
             this.EmployeeNavPannel.SuspendLayout();
             this.CheckinPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TicketInfoDataGrid)).BeginInit();
@@ -74,16 +75,17 @@ namespace AppDevCW1
             ((System.ComponentModel.ISupportInitialize)(this.TicketInfoDataGrid2)).BeginInit();
             this.GenReportPanel.SuspendLayout();
             this.ViewReportPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReportDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).BeginInit();
             this.SuspendLayout();
             // 
             // EmployeeNavPannel
             // 
-            this.EmployeeNavPannel.BackColor = System.Drawing.SystemColors.Highlight;
+            this.EmployeeNavPannel.BackColor = System.Drawing.SystemColors.Desktop;
             this.EmployeeNavPannel.Controls.Add(this.CustomerCheckinBtn);
             this.EmployeeNavPannel.Controls.Add(this.CustomerCheckoutBtn);
             this.EmployeeNavPannel.Controls.Add(this.GenReportBtn);
+            this.EmployeeNavPannel.Controls.Add(this.SignOutBtn);
             this.EmployeeNavPannel.Controls.Add(this.ViewReportBtn);
             this.EmployeeNavPannel.Location = new System.Drawing.Point(0, 0);
             this.EmployeeNavPannel.Name = "EmployeeNavPannel";
@@ -102,7 +104,7 @@ namespace AppDevCW1
             // 
             // CustomerCheckoutBtn
             // 
-            this.CustomerCheckoutBtn.Location = new System.Drawing.Point(242, 3);
+            this.CustomerCheckoutBtn.Location = new System.Drawing.Point(173, 3);
             this.CustomerCheckoutBtn.Name = "CustomerCheckoutBtn";
             this.CustomerCheckoutBtn.Size = new System.Drawing.Size(136, 61);
             this.CustomerCheckoutBtn.TabIndex = 0;
@@ -112,7 +114,7 @@ namespace AppDevCW1
             // 
             // GenReportBtn
             // 
-            this.GenReportBtn.Location = new System.Drawing.Point(454, 3);
+            this.GenReportBtn.Location = new System.Drawing.Point(331, 3);
             this.GenReportBtn.Name = "GenReportBtn";
             this.GenReportBtn.Size = new System.Drawing.Size(136, 61);
             this.GenReportBtn.TabIndex = 0;
@@ -120,9 +122,19 @@ namespace AppDevCW1
             this.GenReportBtn.UseVisualStyleBackColor = true;
             this.GenReportBtn.Click += new System.EventHandler(this.GenReportBtn_Click);
             // 
+            // SignOutBtn
+            // 
+            this.SignOutBtn.Location = new System.Drawing.Point(649, 3);
+            this.SignOutBtn.Name = "SignOutBtn";
+            this.SignOutBtn.Size = new System.Drawing.Size(136, 61);
+            this.SignOutBtn.TabIndex = 0;
+            this.SignOutBtn.Text = "Sign Out";
+            this.SignOutBtn.UseVisualStyleBackColor = true;
+            this.SignOutBtn.Click += new System.EventHandler(this.SignOutBtn_Click);
+            // 
             // ViewReportBtn
             // 
-            this.ViewReportBtn.Location = new System.Drawing.Point(657, 3);
+            this.ViewReportBtn.Location = new System.Drawing.Point(487, 3);
             this.ViewReportBtn.Name = "ViewReportBtn";
             this.ViewReportBtn.Size = new System.Drawing.Size(136, 61);
             this.ViewReportBtn.TabIndex = 0;
@@ -191,6 +203,22 @@ namespace AppDevCW1
             this.TicketTypeCB.Name = "TicketTypeCB";
             this.TicketTypeCB.Size = new System.Drawing.Size(173, 21);
             this.TicketTypeCB.TabIndex = 3;
+            // 
+            // CountTF
+            // 
+            this.CountTF.Location = new System.Drawing.Point(303, 115);
+            this.CountTF.Name = "CountTF";
+            this.CountTF.Size = new System.Drawing.Size(173, 20);
+            this.CountTF.TabIndex = 7;
+            // 
+            // CountLbl
+            // 
+            this.CountLbl.AutoSize = true;
+            this.CountLbl.Location = new System.Drawing.Point(262, 118);
+            this.CountLbl.Name = "CountLbl";
+            this.CountLbl.Size = new System.Drawing.Size(35, 13);
+            this.CountLbl.TabIndex = 4;
+            this.CountLbl.Text = "Count";
             // 
             // TicketType
             // 
@@ -337,6 +365,15 @@ namespace AppDevCW1
             this.ViewReportPanel.TabIndex = 6;
             this.ViewReportPanel.Visible = false;
             // 
+            // ReportDataGrid
+            // 
+            this.ReportDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ReportDataGrid.Location = new System.Drawing.Point(165, 44);
+            this.ReportDataGrid.Name = "ReportDataGrid";
+            this.ReportDataGrid.Size = new System.Drawing.Size(593, 241);
+            this.ReportDataGrid.TabIndex = 8;
+            this.ReportDataGrid.Visible = false;
+            // 
             // ReportBasisLbl
             // 
             this.ReportBasisLbl.AutoSize = true;
@@ -384,14 +421,14 @@ namespace AppDevCW1
             // 
             this.ReportChart.BackColor = System.Drawing.Color.Transparent;
             this.ReportChart.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.TileFlipX;
-            chartArea2.Name = "ChartArea1";
-            this.ReportChart.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.ReportChart.ChartAreas.Add(chartArea1);
             this.ReportChart.Location = new System.Drawing.Point(143, 34);
             this.ReportChart.Name = "ReportChart";
             this.ReportChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series2.ChartArea = "ChartArea1";
-            series2.Name = "Series1";
-            this.ReportChart.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Name = "Series1";
+            this.ReportChart.Series.Add(series1);
             this.ReportChart.Size = new System.Drawing.Size(630, 261);
             this.ReportChart.TabIndex = 5;
             this.ReportChart.Text = "ReportChart";
@@ -426,38 +463,13 @@ namespace AppDevCW1
             this.ViewWeeklyReportBtn.UseVisualStyleBackColor = true;
             this.ViewWeeklyReportBtn.Click += new System.EventHandler(this.ViewWeeklyReportBtn_Click);
             // 
-            // ReportDataGrid
-            // 
-            this.ReportDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ReportDataGrid.Location = new System.Drawing.Point(165, 44);
-            this.ReportDataGrid.Name = "ReportDataGrid";
-            this.ReportDataGrid.Size = new System.Drawing.Size(593, 241);
-            this.ReportDataGrid.TabIndex = 8;
-            this.ReportDataGrid.Visible = false;
-            // 
-            // CountLbl
-            // 
-            this.CountLbl.AutoSize = true;
-            this.CountLbl.Location = new System.Drawing.Point(262, 118);
-            this.CountLbl.Name = "CountLbl";
-            this.CountLbl.Size = new System.Drawing.Size(35, 13);
-            this.CountLbl.TabIndex = 4;
-            this.CountLbl.Text = "Count";
-            // 
-            // CountTF
-            // 
-            this.CountTF.Location = new System.Drawing.Point(303, 115);
-            this.CountTF.Name = "CountTF";
-            this.CountTF.Size = new System.Drawing.Size(173, 20);
-            this.CountTF.TabIndex = 7;
-            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.CheckoutPanel);
             this.Controls.Add(this.CheckinPanel);
+            this.Controls.Add(this.CheckoutPanel);
             this.Controls.Add(this.ViewReportPanel);
             this.Controls.Add(this.GenReportPanel);
             this.Controls.Add(this.EmployeeNavPannel);
@@ -474,8 +486,8 @@ namespace AppDevCW1
             this.GenReportPanel.PerformLayout();
             this.ViewReportPanel.ResumeLayout(false);
             this.ViewReportPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReportDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -518,5 +530,6 @@ namespace AppDevCW1
         private System.Windows.Forms.DataGridView ReportDataGrid;
         private System.Windows.Forms.TextBox CountTF;
         private System.Windows.Forms.Label CountLbl;
+        private System.Windows.Forms.Button SignOutBtn;
     }
 }

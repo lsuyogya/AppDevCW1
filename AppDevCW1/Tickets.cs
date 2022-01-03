@@ -14,7 +14,7 @@ namespace AppDevCW1
         public DateTime sysInDate { get; set; }
         public DateTime sysOutDate { get; set; }
         public string day { get; set; }
-        public Boolean hasPaid { get; set; }
+        public Boolean checkedOut { get; set; }
         public double totalPrice { get; set; }
     }
 }
