@@ -5,19 +5,19 @@
     <visitorCount>0</visitorCount>
   </DailyReport>
   <DailyReport>
-    <visitorCategory>GroupOf10</visitorCategory>
-    <visitorCount>0</visitorCount>
-  </DailyReport>
-  <DailyReport>
-    <visitorCategory>GroupOf15</visitorCategory>
-    <visitorCount>0</visitorCount>
+    <visitorCategory>Child</visitorCategory>
+    <visitorCount>1</visitorCount>
   </DailyReport>
   <DailyReport>
     <visitorCategory>GroupOf5</visitorCategory>
-    <visitorCount>0</visitorCount>
+    <visitorCount>7</visitorCount>
   </DailyReport>
   <DailyReport>
-    <visitorCategory>Child</visitorCategory>
-    <visitorCount>1</visitorCount>
+    <visitorCategory>GroupOf10</visitorCategory>
+    <visitorCount>14</visitorCount>
+  </DailyReport>
+  <DailyReport>
+    <visitorCategory>GroupOf15</visitorCategory>
+    <visitorCount>54</visitorCount>
   </DailyReport>
 </ArrayOfDailyReport>

@@ -116,7 +116,7 @@ namespace AppDevCW1
             CheckinPanel.Visible = true;
 
             var path = "../../Properties/XMLs/Prices.xml";
-            var path2 = "../../Properties/XMLs/Tickets.xml";
+            var path2 = "../../Properties/XMLs/TicketsFake.xml";
             FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<Prices>));
             var prices = xmlSerializer.Deserialize(filestream);
@@ -174,7 +174,7 @@ namespace AppDevCW1
             Boolean countIsInt = int.TryParse(CountTF.Text.ToString(), out int count) ? true : false;
             if (type!=null && day != null && countIsInt)
             {
-                var path = "../../Properties/XMLs/Tickets.xml";
+                var path = "../../Properties/XMLs/TicketsFake.xml";
                 FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
                 xmlSerializer = new XmlSerializer(typeof(List<Tickets>));
                 var ticketDetails = xmlSerializer.Deserialize(filestream);
@@ -211,7 +211,7 @@ namespace AppDevCW1
             HideEmployeePanels();
             CheckoutPanel.Visible = true;
 
-            var path = "../../Properties/XMLs/Tickets.xml";
+            var path = "../../Properties/XMLs/TicketsFake.xml";
             FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<Tickets>));
             var ticketDetails = xmlSerializer.Deserialize(filestream);
@@ -223,7 +223,7 @@ namespace AppDevCW1
         //check price btn inside panel
         private void CheckPriceBtn_Click(object sender, EventArgs e)
         {
-            var path = "../../Properties/XMLs/Tickets.xml";
+            var path = "../../Properties/XMLs/TicketsFake.xml";
             FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<Tickets>));
             var ticketDetails = xmlSerializer.Deserialize(filestream);
@@ -318,7 +318,7 @@ namespace AppDevCW1
         //checkout btn inside panel
         private void CheckoutBtn_Click(object sender, EventArgs e)
         {
-            var path = "../../Properties/XMLs/Tickets.xml";
+            var path = "../../Properties/XMLs/TicketsFake.xml";
             FileStream filestream = new FileStream(path, FileMode.Open, FileAccess.Read);
             xmlSerializer = new XmlSerializer(typeof(List<Tickets>));
             var ticketDetails = xmlSerializer.Deserialize(filestream);
@@ -362,7 +362,7 @@ namespace AppDevCW1
         //Daily report btn inside panel
         private void GenDailyReportBtn_Click(object sender, EventArgs e)
         {
-            var ticketPath = "../../Properties/XMLs/Tickets.xml";
+            var ticketPath = "../../Properties/XMLs/TicketsFake.xml";
             var dailyReportPath = "../../Properties/XMLs/DailyReport.xml";
 
             FileStream filestream = new FileStream(ticketPath, FileMode.Open, FileAccess.Read);
@@ -398,7 +398,7 @@ namespace AppDevCW1
         //Weekly report btn inside panel
         private void GenWeeklyReportBtn_Click(object sender, EventArgs e)
         { 
-            var ticketPath = "../../Properties/XMLs/Tickets.xml";
+            var ticketPath = "../../Properties/XMLs/TicketsFake.xml";
             var weeklyReportPath = "../../Properties/XMLs/WeeklyReport.xml";
 
             FileStream filestream = new FileStream(ticketPath, FileMode.Open, FileAccess.Read);
